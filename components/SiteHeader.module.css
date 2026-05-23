@@ -1,0 +1,165 @@
+/* Utility bar */
+.util {
+  background: #0e0e0c;
+  color: #d8d4c9;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+.utilRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 34px;
+  gap: 24px;
+}
+.marqueeWrap {
+  overflow: hidden;
+  flex: 1;
+}
+.right {
+  display: flex;
+  gap: 18px;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+.right a:hover {
+  color: #fff;
+}
+
+/* Header */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-line);
+}
+.navRow {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+  height: 76px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.mark {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+}
+.mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0 16px;
+  height: 46px;
+  max-width: 560px;
+  width: 100%;
+  margin: 0 auto;
+}
+.search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14.5px;
+  color: var(--color-ink);
+}
+.kbd {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-ink-3);
+  border: 1px solid var(--color-line);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Home nav links row */
+.navlinks {
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-bg);
+}
+.navlinksRow {
+  display: flex;
+  gap: 24px;
+  height: 46px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--color-ink-2);
+  overflow-x: auto;
+}
+.navlinksRow a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.navlinksRow a:hover {
+  color: var(--color-ink);
+}
+.hot {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.spacer {
+  margin-left: auto;
+}
+
+/* Category pills subnav (category + product pages) */
+.subnav {
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-bg);
+}
+.subnavRow {
+  display: flex;
+  gap: 8px;
+  height: 50px;
+  align-items: center;
+  overflow-x: auto;
+}
+.subnavRow a {
+  padding: 8px 14px;
+  font-size: 13.5px;
+  color: var(--color-ink-2);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.subnavRow a:hover {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+}
+.on {
+  background: var(--color-ink);
+  color: #fff;
+}
+
+@media (max-width: 860px) {
+  .search {
+    display: none;
+  }
+  .navRow {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wireless India — Components, Audio &amp; Accessories · Theni</title>
+<meta name="description" content="Electronics shop in Theni. Sound bars, Bluetooth speakers, multimeters, ICs, cables, pendrives and more. Walk in or WhatsApp +91 98658 11796." />
+<meta property="og:title" content="Wireless India — Electronics, Theni" />
+<meta property="og:description" content="Components, audio &amp; accessories under one roof in Theni, Tamil Nadu." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="project/assets/logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="project/assets/shared.css" />
+<style>
+/* ── Layout ── */
+.wrap { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
+
+/* ── Utility bar ── */
+.util { background: #0e0e0c; color: #d8d4c9; font-size: 12px; letter-spacing: 0.02em; }
+.util .wrap { display: flex; justify-content: space-between; align-items: center; height: 34px; gap: 24px; }
+.util .marquee-wrap { overflow: hidden; flex: 1; }
+.util .marquee-track { display: flex; width: max-content; gap: 32px; animation: marquee 30s linear infinite; }
+.util .marquee-track span { white-space: nowrap; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.util .right { display: flex; gap: 18px; opacity: 0.85; flex-shrink: 0; }
+.util .right a { color: #d8d4c9; transition: color .15s; }
+.util .right a:hover { color: #fff; }
+
+/* ── Header ── */
+header.nav { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--line); }
+header.nav .wrap { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; height: 76px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; white-space: nowrap; }
+.logo .mark { width: 36px; height: 36px; display: grid; place-items: center; }
+.logo .mark img { width: 100%; height: 100%; object-fit: contain; }
+.search-bar {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 999px; padding: 0 16px; height: 46px;
+  max-width: 560px; width: 100%; margin: 0 auto;
+  cursor: pointer; transition: border-color .15s;
+}
+.search-bar:hover { border-color: #c8c5bc; }
+.search-bar span { flex: 1; font-size: 14px; color: var(--ink-3); }
+.search-bar .kbd { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); border: 1px solid var(--line); padding: 2px 6px; border-radius: 6px; }
+.nav-actions { display: flex; align-items: center; gap: 8px; }
+.icon-btn {
+  width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+  border: 1px solid var(--line); background: var(--surface); position: relative;
+  transition: background .15s, border-color .15s;
+}
+.icon-btn:hover { background: var(--accent-soft); border-color: #f7d3bf; }
+.icon-btn .num {
+  position: absolute; transform: translate(14px,-14px);
+  background: var(--accent); color: #fff; font-size: 10px; height: 16px; min-width: 16px; padding: 0 4px;
+  border-radius: 999px; display: grid; place-items: center; font-weight: 600;
+}
+.btn {
+  height: 44px; padding: 0 18px; border-radius: 999px;
+  background: var(--ink); color: #fff; font-weight: 600; font-size: 14px;
+  display: inline-flex; align-items: center; gap: 8px; transition: opacity .15s;
+}
+.btn:hover { opacity: 0.85; }
+.btn.accent { background: var(--accent); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+
+/* ── Nav links ── */
+.navlinks { border-bottom: 1px solid var(--line); background: var(--bg); }
+.navlinks .wrap { display: flex; gap: 24px; height: 46px; align-items: center; font-size: 14px; color: var(--ink-2); overflow-x: auto; scrollbar-width: none; }
+.navlinks .wrap::-webkit-scrollbar { display: none; }
+.navlinks a { display: flex; align-items: center; gap: 6px; white-space: nowrap; transition: color .15s; }
+.navlinks a:hover { color: var(--ink); }
+.navlinks a.hot { color: var(--accent); font-weight: 600; }
+
+/* ── Hero bento ── */
+.hero { padding: 22px 0 12px; }
+.hero-bento {
+  display: grid;
+  grid-template-columns: 1.05fr 1.45fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px; height: 640px;
+}
+.btile {
+  border-radius: 22px; background: var(--surface); border: 1px solid var(--line);
+  overflow: hidden; position: relative; display: flex; flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.btile:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); border-color: #d8d4c9; }
+.btile a.cover { position: absolute; inset: 0; z-index: 2; }
+.btile .tag {
+  position: absolute; top: 16px; left: 16px;
+  background: var(--ink); color: #fff; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.04em; padding: 4px 8px; border-radius: 6px; z-index: 1;
+}
+.btile .tag.hot { background: var(--accent); }
+.btile .tag.new { background: #1f8a5b; }
+
+/* Dark brand tile */
+.b-brand {
+  grid-row: span 2; background: var(--ink); color: #fff;
+  padding: 28px; justify-content: space-between; border-color: var(--ink);
+}
+.b-brand::before {
+  content: ""; position: absolute; right: -120px; top: -80px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--accent), #b03a10 70%);
+  opacity: 0.85;
+}
+.b-brand .eye {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); text-transform: uppercase;
+  font-size: 11px; letter-spacing: 0.18em; color: #ffd1bf;
+}
+.b-brand .eye .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(255,91,31,0.25); }
+.b-brand h1 {
+  position: relative; z-index: 1;
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(24px, 2.2vw, 34px); line-height: 1.05;
+  letter-spacing: -0.02em; margin: 12px 0 10px;
+}
+.b-brand h1 em { font-style: italic; color: var(--accent); }
+.b-brand p { position: relative; z-index: 1; color: #c8c5bc; font-size: 13px; line-height: 1.5; margin: 0 0 14px; }
+.b-brand .ctas { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.b-brand .ctas .btn { width: 100%; justify-content: center; height: 42px; font-size: 13.5px; }
+.b-brand .ctas .btn.ghost { color: #fff; border-color: #3a3833; background: transparent; }
+.b-brand .stats {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px;
+  border-top: 1px solid #2a2824; padding-top: 12px;
+  color: #a09c93; font-size: 11px; line-height: 1.3;
+}
+.b-brand .stats b { display: block; color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 1px; letter-spacing: -0.01em; }
+
+/* Featured tile */
+.b-feature {
+  grid-row: span 2; padding: 52px 28px 28px;
+  background: linear-gradient(135deg, #fff4ec 0%, #ffdcc4 100%);
+  border-color: #f7d3bf;
+}
+.b-feature .meta-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; position: relative; z-index: 1; }
+.b-feature .brand-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #b85a1f; }
+.b-feature h2 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(24px, 2.6vw, 36px); line-height: 1.05;
+  margin: 8px 0 0; max-width: 380px; letter-spacing: -0.01em;
+}
+.b-feature .heart-btn {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.6);
+  display: grid; place-items: center; flex: none; position: relative; z-index: 3;
+  transition: background .15s, color .15s;
+}
+.b-feature .heart-btn:hover, .b-feature .heart-btn.active { background: #fff; color: var(--accent); }
+.b-feature .specs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; position: relative; z-index: 1; }
+.b-feature .specs span { background: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.5); padding: 4px 10px; border-radius: 999px; font-size: 12px; color: #6b3a1c; }
+.b-feature .img-area { flex: 1; min-height: 0; margin: 14px -14px 0; display: grid; place-items: center; }
+.b-feature .img-area img { max-width: 96%; max-height: 92%; object-fit: contain; mix-blend-mode: multiply; }
+.b-feature .price-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 16px; border-top: 1px solid rgba(184,90,31,0.18); position: relative; z-index: 1;
+}
+.b-feature .price { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+.b-feature .price .was { font-size: 14px; color: #a76434; font-weight: 500; text-decoration: line-through; margin-left: 8px; }
+.b-feature .wa-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--ink); color: #fff; height: 36px; padding: 0 14px;
+  border-radius: 999px; font-size: 13px; font-weight: 500; position: relative; z-index: 3;
+  transition: background .15s;
+}
+.b-feature .wa-pill:hover { background: #2a2824; }
+
+/* Small tiles */
+.b-small { padding: 48px 18px 18px; }
+.b-small .brand-tag { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+.b-small .name { font-size: 15px; font-weight: 600; line-height: 1.25; margin: 4px 0 0; min-height: 36px; }
+.b-small .img-area {
+  flex: 1; min-height: 0; margin: 12px 0;
+  display: grid; place-items: center; overflow: hidden;
+  background: linear-gradient(180deg, #faf8f3, #efece5); border-radius: 12px;
+}
+.b-small .img-area img { max-width: 80%; max-height: 80%; object-fit: contain; mix-blend-mode: multiply; }
+.b-small .price-row { display: flex; justify-content: space-between; align-items: center; }
+.b-small .price { font-weight: 700; font-size: 15px; }
+.b-small .price .was { color: var(--ink-3); text-decoration: line-through; font-weight: 500; font-size: 11px; margin-left: 4px; }
+.b-small .wa { color: #1f8a5b; font-weight: 600; font-size: 12px; display: flex; align-items: center; gap: 4px; }
+.b-small .heart {
+  position: absolute; top: 14px; right: 14px;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--line);
+  display: grid; place-items: center; z-index: 3;
+  transition: color .15s, border-color .15s;
+}
+.b-small .heart:hover, .b-small .heart.active { color: var(--accent); border-color: var(--accent); }
+
+/* Brand strip */
+.brandstrip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); margin-top: 28px; overflow: hidden; }
+.brandstrip .wrap { display: flex; align-items: center; gap: 40px; height: 84px; }
+.brandstrip .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+.brandstrip .brands { display: flex; gap: 44px; align-items: center; }
+.brandstrip .brand { font-family: var(--font-display); font-size: 26px; color: var(--ink-2); font-weight: 400; opacity: 0.7; white-space: nowrap; }
+
+/* Section heading */
+.section { padding: 64px 0; }
+.s-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+.s-head h2 { font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 56px); font-weight: 400; line-height: 1; letter-spacing: -0.02em; margin: 0; }
+.s-head .s-sub { color: var(--ink-3); font-size: 14px; max-width: 360px; margin-top: 10px; }
+.s-head .s-right { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+
+/* Product cards */
+.grid-products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 14px; position: relative;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  text-decoration: none; color: inherit;
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); border-color: #d8d4c9; }
+.card .tag { position: absolute; top: 22px; left: 22px; background: var(--ink); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 6px; letter-spacing: 0.02em; }
+.card .tag.hot { background: var(--accent); }
+.card .tag.new { background: #1f8a5b; }
+.card .heart {
+  position: absolute; top: 18px; right: 18px;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--line);
+  display: grid; place-items: center; z-index: 1;
+  transition: color .15s, border-color .15s;
+}
+.card .heart:hover, .card .heart.active { color: var(--accent); border-color: var(--accent); }
+.card .pimg { width: 100%; aspect-ratio: 1/1; background: linear-gradient(180deg,#faf8f3,#efece5); border-radius: var(--radius); display: grid; place-items: center; overflow: hidden; }
+.card .pimg img { max-width: 80%; max-height: 80%; object-fit: contain; mix-blend-mode: multiply; }
+.card .body { padding: 6px 8px 8px; }
+.card .brand { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+.card .name { font-size: 15.5px; font-weight: 600; line-height: 1.25; margin: 6px 0 10px; min-height: 38px; }
+.card .row { display: flex; align-items: center; justify-content: space-between; }
+.card .price { font-size: 17px; font-weight: 700; }
+.card .price .was { font-size: 12.5px; color: var(--ink-3); font-weight: 500; text-decoration: line-through; margin-left: 6px; }
+.card .wa { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--ok); font-weight: 600; }
+
+/* Categories */
+.cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.cat {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 22px; display: flex; flex-direction: column; gap: 8px; min-height: 180px;
+  position: relative; overflow: hidden;
+  transition: background .2s, border-color .2s;
+}
+.cat:hover { background: var(--accent-soft); border-color: #f7d3bf; }
+.cat .count { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
+.cat .cat-name { font-family: var(--font-display); font-size: 28px; line-height: 1.05; font-weight: 400; }
+.cat .cat-blurb { color: var(--ink-3); font-size: 13px; max-width: 90%; }
+.cat .arrow { margin-top: auto; align-self: flex-end; width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; }
+.cat .cat-img { position: absolute; right: -10px; bottom: -10px; width: 130px; height: 130px; display: grid; place-items: center; opacity: 0.95; }
+.cat .cat-img img { max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+
+/* Promo */
+.promo {
+  background: var(--ink); color: #fff; border-radius: 28px; padding: 56px;
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center;
+  position: relative; overflow: hidden;
+}
+.promo::after { content:""; position:absolute; right:-120px; top:-120px; width:480px; height:480px; border-radius:50%; border:80px solid rgba(255,91,31,0.18); }
+.promo h2 { font-family: var(--font-display); font-size: 52px; line-height: 1; font-weight: 400; margin: 8px 0 16px; }
+.promo .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #ffd1bf; display: inline-flex; align-items: center; gap: 8px; }
+.promo .eyebrow::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); display:block; }
+.promo p { color: #d8d4c9; max-width: 480px; line-height: 1.55; margin-bottom: 22px; }
+.wa-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #1f8a5b; color: #fff; font-weight: 600; height: 52px; padding: 0 22px; border-radius: 999px;
+  transition: background .15s;
+}
+.wa-cta:hover { background: #176a47; }
+.promo-side { position: relative; z-index: 1; }
+.promo-photo { aspect-ratio: 4/5; background: linear-gradient(135deg,#2a2824,#45433e); border-radius: 18px; display: grid; place-items: center; overflow: hidden; }
+.promo-photo span { font-family: var(--font-mono); font-size: 11px; color: #807c72; }
+
+/* Arrivals */
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+.eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.arrivals { display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: start; }
+.arrivals .intro { position: sticky; top: 130px; }
+.arrivals .ticker { display: flex; gap: 12px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+.arrivals .ticker::-webkit-scrollbar { display: none; }
+.arrival { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); min-width: 190px; padding: 14px; text-decoration: none; color: inherit; display: block; transition: border-color .2s, transform .2s; }
+.arrival:hover { border-color: #d8d4c9; transform: translateY(-2px); }
+.arrival .pimg { aspect-ratio: 1; margin-bottom: 12px; background: linear-gradient(180deg,#faf8f3,#efece5); border-radius: var(--radius); display: grid; place-items: center; overflow: hidden; }
+.arrival .pimg img { max-width: 78%; max-height: 78%; object-fit: contain; mix-blend-mode: multiply; }
+.arrival .brand { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+.arrival .name { font-size: 14px; font-weight: 600; margin: 4px 0 8px; }
+.arrival .price { font-size: 14px; font-weight: 700; }
+
+/* Trust */
+.trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.trust .item { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; background: var(--surface); display: flex; gap: 14px; align-items: flex-start; }
+.trust .item .ico { width: 40px; height: 40px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex: none; }
+.trust .item h4 { margin: 0 0 4px; font-size: 15px; font-weight: 700; }
+.trust .item p { margin: 0; font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+
+/* Visit */
+.visit { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: stretch; }
+.visit-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 36px; display: flex; flex-direction: column; justify-content: space-between; }
+.visit-card h2 { font-family: var(--font-display); font-size: 52px; font-weight: 400; line-height: 1; margin: 14px 0 0; }
+.visit-card dl { display: grid; grid-template-columns: 110px 1fr; row-gap: 12px; margin: 24px 0 0; font-size: 14px; }
+.visit-card dt { color: var(--ink-3); font-family: var(--font-mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.12em; align-self: center; }
+.visit-card dd { margin: 0; font-weight: 500; }
+.visit-card dd a { color: inherit; border-bottom: 1px solid var(--line); transition: border-color .15s; }
+.visit-card dd a:hover { border-color: var(--ink); }
+.map-card { border-radius: var(--radius-lg); border: 1px solid var(--line); overflow: hidden; min-height: 360px; }
+.map-card iframe { width: 100%; height: 100%; min-height: 360px; border: none; display: block; }
+
+/* Footer */
+footer { background: var(--ink); color: #d8d4c9; margin-top: 72px; }
+footer .wrap { padding: 64px 28px 28px; display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; }
+footer h4 { color: #fff; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 16px; font-family: var(--font-mono); }
+footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14px; }
+footer ul a { color: #d8d4c9; transition: color .15s; }
+footer ul a:hover { color: #fff; }
+footer .brandblock p { color: #a09c93; line-height: 1.55; max-width: 320px; margin-top: 14px; }
+footer .bottom { border-top: 1px solid #2a2824; padding: 20px 28px; display: flex; justify-content: space-between; font-size: 12px; color: #807c72; }
+
+/* SVG helper */
+.i { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── Search overlay ── */
+.search-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(14,14,12,0.7); backdrop-filter: blur(4px); display: none; align-items: flex-start; justify-content: center; padding-top: 80px; }
+.search-overlay.open { display: flex; }
+.search-modal { background: var(--surface); border-radius: 20px; width: 640px; max-width: calc(100vw - 40px); border: 1px solid var(--line); box-shadow: var(--shadow-2); overflow: hidden; }
+.search-modal-bar { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.search-modal-bar input { flex: 1; border: none; outline: none; font-size: 17px; font-family: var(--font-sans); color: var(--ink); background: transparent; }
+.search-results { max-height: 400px; overflow-y: auto; }
+.search-result { display: flex; align-items: center; gap: 14px; padding: 12px 20px; border-bottom: 1px solid var(--line-2); text-decoration: none; color: inherit; transition: background .1s; }
+.search-result:last-child { border-bottom: none; }
+.search-result:hover, .search-result.focused { background: var(--accent-soft); }
+.search-result .thumb { width: 48px; height: 48px; border-radius: 10px; flex: none; background: linear-gradient(180deg,#faf8f3,#efece5); display: grid; place-items: center; overflow: hidden; }
+.search-result .thumb img { max-width: 80%; max-height: 80%; object-fit: contain; mix-blend-mode: multiply; }
+.search-result .info { flex: 1; }
+.search-result .info .sname { font-weight: 600; font-size: 14px; }
+.search-result .info .sbrand { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-top: 2px; }
+.search-result .sprice { font-weight: 700; font-size: 15px; }
+.search-empty { padding: 32px 20px; text-align: center; color: var(--ink-3); font-size: 14px; }
+.search-footer { padding: 10px 20px; font-size: 12px; color: var(--ink-3); display: flex; gap: 16px; border-top: 1px solid var(--line-2); background: var(--bg); }
+.search-footer kbd { font-family: var(--font-mono); font-size: 10px; border: 1px solid var(--line); padding: 2px 5px; border-radius: 4px; }
+
+/* ── Mobile nav ── */
+.menu-btn { display: none; }
+.mobile-nav { display: none; position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; }
+.mobile-nav.open { display: block; }
+.mobile-nav .mn-head { display: flex; align-items: center; justify-content: space-between; padding: 20px; border-bottom: 1px solid var(--line); }
+.mobile-nav .mn-links { padding: 12px; display: grid; gap: 2px; }
+.mobile-nav .mn-links a { padding: 12px 16px; border-radius: 12px; font-size: 16px; font-weight: 500; display: block; transition: background .1s; }
+.mobile-nav .mn-links a:hover { background: var(--accent-soft); }
+.mobile-nav .mn-links a.hot { color: var(--accent); }
+.mobile-nav .mn-footer { padding: 16px; border-top: 1px solid var(--line); }
+
+/* ── Responsive ── */
+@media (max-width: 1080px) {
+  .hero-bento { grid-template-columns: 1fr 1.4fr; grid-template-rows: auto; height: auto; }
+  .b-brand { grid-row: span 1; min-height: 300px; }
+  .b-feature { grid-row: span 1; min-height: 360px; }
+  .grid-products { grid-template-columns: repeat(3, 1fr); }
+  .cats { grid-template-columns: repeat(3, 1fr); }
+  .trust { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .wrap { padding: 0 16px; }
+  .util .right { display: none; }
+  header.nav .wrap { grid-template-columns: auto 1fr auto; gap: 12px; }
+  .search-bar .kbd { display: none; }
+  .search-bar span { font-size: 13px; }
+  .nav-actions .btn { display: none; }
+  .menu-btn { display: grid !important; }
+  .navlinks { display: none; }
+
+  .hero-bento { grid-template-columns: 1fr; height: auto; }
+  .b-brand { min-height: 260px; }
+  .b-feature { min-height: 340px; }
+  .b-small { min-height: 180px; }
+
+  .grid-products { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .cats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .cat { min-height: 150px; }
+  .cat .cat-name { font-size: 22px; }
+  .cat .cat-img { width: 90px; height: 90px; }
+
+  .promo { grid-template-columns: 1fr; padding: 36px 28px; }
+  .promo h2 { font-size: 38px; }
+  .promo-side { display: none; }
+
+  .arrivals { grid-template-columns: 1fr; }
+  .arrivals .intro { position: static; margin-bottom: 16px; }
+
+  .trust { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .trust .item { padding: 16px; }
+
+  .visit { grid-template-columns: 1fr; }
+  .map-card { min-height: 260px; }
+
+  .s-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .s-head h2 { font-size: 36px; }
+
+  footer .wrap { grid-template-columns: 1fr 1fr; gap: 32px; padding: 40px 16px 24px; }
+  footer .bottom { flex-direction: column; gap: 6px; padding: 16px; }
+
+  .brandstrip .label { display: none; }
+}
+
+@media (max-width: 480px) {
+  .grid-products { grid-template-columns: 1fr 1fr; }
+  .trust { grid-template-columns: 1fr; }
+  footer .wrap { grid-template-columns: 1fr; }
+  .visit-card h2 { font-size: 38px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Utility bar -->
+<div class="util">
+  <div class="wrap">
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span>⚡ Free delivery in city for orders above ₹999</span>
+        <span>·</span>
+        <span>📞 Bulk &amp; trade buyers — call +91 98658 11796</span>
+        <span>·</span>
+        <span>🔧 Components, audio, repairs &amp; tools — all under one roof</span>
+        <span>·</span>
+        <span>⚡ Free delivery in city for orders above ₹999</span>
+        <span>·</span>
+        <span>📞 Bulk &amp; trade buyers — call +91 98658 11796</span>
+        <span>·</span>
+        <span>🔧 Components, audio, repairs &amp; tools — all under one roof</span>
+        <span>·</span>
+      </div>
+    </div>
+    <div class="right">
+      <a href="tel:+919865811796">+91 98658 11796</a>
+      <a href="project/contact.html">Visit shop</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#" class="logo">
+      <span class="mark"><img src="project/assets/logo.svg" alt="Wireless India logo" /></span>
+      <span>Wireless India</span>
+    </a>
+
+    <div class="search-bar" id="search-trigger" role="button" tabindex="0" aria-label="Search products">
+      <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <span>Search 2,000+ items — "multimeter", "HDMI 2m", "soundbar"…</span>
+      <span class="kbd">⌘ K</span>
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="wishlist-btn" title="Wishlist" aria-label="Wishlist">
+        <svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9.5C1 8 3 4.5 6.5 4.5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 7-2.5 5-9.5 9.5-9.5 9.5z"/></svg>
+        <span class="num" id="wishlist-count" style="display:none">0</span>
+      </button>
+      <button class="icon-btn menu-btn" id="menu-open" aria-label="Open menu" style="display:none">
+        <svg class="i" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <a href="project/category.html" class="btn">
+        Shop now
+        <svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Nav links -->
+<div class="navlinks">
+  <div class="wrap">
+    <a href="project/category.html"><svg class="i" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg> All categories</a>
+    <a href="project/category.html">Sound Bars</a>
+    <a href="project/category.html">Bluetooth Speakers</a>
+    <a href="project/category.html">Keyboards &amp; Mice</a>
+    <a href="project/category.html">Multimeters</a>
+    <a href="project/category.html">ICs &amp; FETs</a>
+    <a href="project/category.html">Cables &amp; Wires</a>
+    <a href="project/category.html">Pendrives</a>
+    <a href="project/category.html">Power Strips</a>
+    <a href="project/category.html">Screwdrivers</a>
+    <a href="project/category.html" class="hot">● New arrivals</a>
+    <a href="project/contact.html" style="margin-left:auto">Visit shop</a>
+  </div>
+</div>
+
+<!-- Hero bento -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-bento">
+
+      <!-- 1. Brand manifesto -->
+      <article class="btile b-brand">
+        <div>
+          <span class="eye"><span class="dot"></span> Stocked · May 2026</span>
+          <h1>From a single <em>resistor</em>, to a full <em>soundstage.</em></h1>
+          <p>Audio, multimeters, ICs, cables, peripherals &amp; tools — stocked, sorted, ready to walk out with.</p>
+        </div>
+        <div>
+          <div class="ctas">
+            <a class="btn accent" href="project/category.html">Browse the shop
+              <svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </a>
+            <a class="btn ghost" href="https://wa.me/919865811796" target="_blank" rel="noopener noreferrer">
+              <svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M3 21l2-5a9 9 0 1 1 4 4l-6 1z"/></svg>
+              WhatsApp us
+            </a>
+          </div>
+          <div class="stats">
+            <div><b>2,400+</b>Items in stock</div>
+            <div><b>10</b>Categories</div>
+            <div><b>Same-day</b>City delivery</div>
+            <div><b>15-min</b>WhatsApp reply</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Featured deal -->
+      <article class="btile b-feature">
+        <a class="cover" href="project/product.html" aria-label="View Zeb Juke Bar 9750 Pro"></a>
+        <span class="tag hot">Hot deal · -29%</span>
+        <button class="heart-btn" data-id="zeb-9750" aria-label="Add to wishlist">
+          <svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9.5C1 8 3 4.5 6.5 4.5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 7-2.5 5-9.5 9.5-9.5 9.5z"/></svg>
+        </button>
+        <div class="meta-row">
+          <div>
+            <span class="brand-tag">Zebronics · Sound Bars</span>
+            <h2>Zeb Juke Bar 9750 Pro · <em style="font-style:italic;color:var(--accent)">Dolby Atmos</em></h2>
+            <div class="specs">
+              <span>5.1.2 channel</span>
+              <span>425W output</span>
+              <span>Wireless sub</span>
+              <span>HDMI eARC</span>
+            </div>
+          </div>
+        </div>
+        <div class="img-area">
+          <img src="project/assets/products/sound-bars/zeb-juke-bar-9750-pro.webp" alt="Zeb Juke Bar 9750 Pro soundbar" loading="eager" />
+        </div>
+        <div class="price-row">
+          <div class="price">₹24,999 <span class="was">₹34,999</span></div>
+          <a class="wa-pill" href="project/product.html">View &amp; enquire <svg class="i" viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <!-- 3. Multimeter -->
+      <article class="btile b-small">
+        <a class="cover" href="project/product.html" aria-label="View AstroAI multimeter"></a>
+        <span class="tag new">New</span>
+        <button class="heart" data-id="astroai-am33d" aria-label="Add to wishlist">
+          <svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9.5C1 8 3 4.5 6.5 4.5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 7-2.5 5-9.5 9.5-9.5 9.5z"/></svg>
+        </button>
+        <div class="brand-tag" style="margin-top:4px">AstroAI · Multimeters</div>
+        <div class="name">AM33D Digital Multimeter</div>
+        <div class="img-area"><img src="project/assets/products/multimeters/astroai-am33d.jpg" alt="AstroAI AM33D multimeter" loading="lazy" /></div>
+        <div class="price-row">
+          <span class="price">₹1,499 <span class="was">₹1,999</span></span>
+          <span class="wa"><svg class="i" viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M3 21l2-5a9 9 0 1 1 4 4l-6 1z"/></svg> Enquire</span>
+        </div>
+      </article>
+
+      <!-- 4. BT Speaker -->
+      <article class="btile b-small">
+        <a class="cover" href="project/product.html" aria-label="View Stone SpinX Pro"></a>
+        <span class="tag">Bestseller</span>
+        <button class="heart" data-id="stone-spinx" aria-label="Add to wishlist">
+          <svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9.5C1 8 3 4.5 6.5 4.5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 7-2.5 5-9.5 9.5-9.5 9.5z"/></svg>
+        </button>
+        <div class="brand-tag" style="margin-top:4px">Portronics · BT Speakers</div>
+        <div class="name">Stone SpinX Pro RGB Speaker</div>
+        <div class="img-area"><img src="project/assets/products/bluetooth-speakers/stone-spinx-pro.webp" alt="Stone SpinX Pro speaker" loading="lazy" /></div>
+        <div class="price-row">
+          <span class="price">₹2,499 <span class="was">₹3,499</span></span>
+          <span class="wa"><svg class="i" viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M3 21l2-5a9 9 0 1 1 4 4l-6 1z"/></svg> Enquire</span>
+        </div>
+      </article>
+
+      <!-- 5. Pendrive -->
+      <article class="btile b-small">
+        <a class="cover" href="project/product.html" aria-label="View SanDisk Ultra Dual Drive"></a>
+        <span class="tag hot">-22%</span>
+        <button class="heart" data-id="sandisk-otg" aria-label="Add to wishlist">
+          <svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9.5C1 8 3 4.5 6.5 4.5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 7-2.5 5-9.5 9.5-9.5 9.5z"/></svg>
+        </button>
+        <div class="brand-tag" style="margin-top:4px">SanDisk · Pendrives</div>
+        <div class="name">Ultra Dual Drive Go 64GB USB-C</div>
+        <div class="img-area"><img src="project/assets/products/pendrives/sandisk-ultra-dual.jpg" alt="SanDisk Ultra Dual Drive" loading="lazy" /></div>
+        <div class="price-row">
+          <span class="price">₹699 <span class="was">₹899</span></span>
+          <span class="wa"><svg class="i" viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M3 21l2-5a9 9 0 1 1 4 4l-6 1z"/></svg> Enquire</span>
+        </div>
+      </article>
+
+      <!-- 6. Power strip -->
+      <article class="btile b-small">
+        <a class="cover" href="project/product.html" aria-label="View USB-C power strip"></a>
+        <span class="tag new">New</span>
+        <button class="heart" data-id="powerstrip-usbc" aria-label="Add to wishlist">
+          <svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9.5C1 8 3 4.5 6.5 4.5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 7-2.5 5-9.5 9.5-9.5 9.5z"/></svg>
+        </button>
+        <div class="brand-tag" style="margin-top:4px">Generic · Power Strips</div>
+        <div class="name">USB-C Power Strip, 10A, 4-socket</div>
+        <div class="img-area"><img src="project/assets/products/powerstrips/usb-c-strip.webp" alt="USB-C power strip" loading="lazy" /></div>
+        <div class="price-row">
+          <span class="price">₹899 <span class="was">₹1,299</span></span>
+          <span class="wa"><svg class="i" viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M3 21l2-5a9 9 0 1 1 4 4l-6 1z"/></svg> Enquire</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Brand strip -->
+<div class="brandstrip">
+  <div class="wrap">
+    <span class="label">Brands we carry —</span>
+    <div class="brands">
+      <span class="brand">Zebronics</span>
+      <span class="brand">boAt</span>
+      <span class="brand">Portronics</span>
+      <span class="brand">Logitech</span>
+      <span class="brand">SanDisk</span>
+      <span class="brand">AstroAI</span>
+      <span class="brand">Stanley</span>
+      <span class="brand">Dell</span>
+      <span class="brand">Artis</span>
+      <span class="brand">+40 more</span>
+    </div>
+  </div>
+</div>
+
+<!-- Featured products -->
+<section class="section">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <h2>Stocked this week</h2>
+        <p class="s-sub">A walk down the shop — soundbars, multimeters, drives, cables, ICs. Picked by the floor staff.</p>
+      </div>
+      <div class="s-right">
+        <a class="btn ghost" href="project/category.html">See all 2,400 →</a>
+      </div>
+    </div>
+    <div class="grid-products" id="featured-grid"></div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <h2>Shop by category</h2>
+        <p class="s-sub">From a single FET to a 5.1 sound system — we've got the rack-space for it.</p>
+      </div>
+      <div class="s-right">
+        <a class="btn ghost" href="project/category.html">All categories →</a>
+      </div>
+    </div>
+    <div class="cats" id="cats-grid"></div>
+  </div>
+</section>
+
+<!-- WhatsApp promo -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="promo">
+      <div>
+        <span class="eyebrow">WhatsApp first</span>
+        <h2>Not sure which one?<br/>Just ask us.</h2>
+        <p>Send a photo, model number, or even a voice note — our team replies within 15 minutes during shop hours with availability, the best price, and an honest recommendation.</p>
+        <a class="wa-cta" href="https://wa.me/919865811796" target="_blank" rel="noopener noreferrer">
+          <svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M3 21l2-5a9 9 0 1 1 4 4l-6 1z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+      <div class="promo-side">
+        <div class="promo-photo"><span>Shop photo coming soon →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- New arrivals -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="arrivals">
+      <div class="intro">
+        <span class="eyebrow"><span class="dot"></span> Just in</span>
+        <h2 style="font-family:var(--font-display);font-weight:400;font-size:44px;margin:12px 0 14px;line-height:1">New<br/>arrivals.</h2>
+        <p style="color:var(--ink-3);font-size:14px;max-width:200px;line-height:1.5">Restocked this fortnight. Drop in, or message us for a stock check.</p>
+      </div>
+      <div class="ticker" id="arrivals-ticker"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust -->
+<section class="section" style="padding:36px 0">
+  <div class="wrap">
+    <div class="trust">
+      <div class="item">
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M3 7h18l-2 13H5z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></div>
+        <div><h4>Curated, not just stocked</h4><p>Every brand on shelf is one we'd recommend to a friend.</p></div>
+      </div>
+      <div class="item">
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 8 10 8 10s8-5 8-10V6z"/></svg></div>
+        <div><h4>Genuine warranty</h4><p>Brand warranty on everything. We handle the paperwork too.</p></div>
+      </div>
+      <div class="item">
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+        <div><h4>Test before you buy</h4><p>Demo room — listen, click, compare in-store before you commit.</p></div>
+      </div>
+      <div class="item">
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><h4>Walk-in shop, real humans</h4><p>Open Mon–Sat. Coffee while you compare? Sure.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Visit -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="visit">
+      <div class="visit-card">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Come say hi</span>
+          <h2>Visit the<br/>shop in person.</h2>
+          <p style="color:var(--ink-3);max-width:380px;line-height:1.55;margin-top:8px">There's no replacement for actually hearing a soundbar in a room, or holding the keyboard before you commit.</p>
+        </div>
+        <dl>
+          <dt>Address</dt>
+          <dd>8, Kadarkarai Nadar St,<br/>Theni — 625531, Tamil Nadu</dd>
+          <dt>Hours</dt>
+          <dd>Mon – Sat · 10:30 am – 8:30 pm</dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:+919865811796">+91 98658 11796</a></dd>
+          <dt>WhatsApp</dt>
+          <dd><a href="https://wa.me/919865811796" target="_blank" rel="noopener noreferrer">+91 98658 11796</a></dd>
+        </dl>
+      </div>
+      <div class="map-card">
+        <iframe
+          title="Wireless India on Google Maps"
+          src="https://maps.google.com/maps?q=Wireless+India,+8+Kadarkarai+Nadar+St,+Theni,+Tamil+Nadu+625531,+India&output=embed&hl=en&z=16"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="brandblock">
+      <a class="logo" href="#">
+        <span class="mark"><img src="project/assets/logo.svg" alt="" /></span>
+        <span style="color:#fff">Wireless India</span>
+      </a>
+      <p>A neighbourhood electronics shop, online. Curating audio, peripherals and components since 1998.</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="project/category.html">Sound Bars &amp; Home Theatre</a></li>
+        <li><a href="project/category.html">Bluetooth Speakers</a></li>
+        <li><a href="project/category.html">Keyboards &amp; Mice</a></li>
+        <li><a href="project/category.html">ICs, FETs &amp; Components</a></li>
+        <li><a href="project/category.html">Cables &amp; Wires</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Help</h4>
+      <ul>
+        <li><a href="project/contact.html">Visit shop</a></li>
+        <li><a href="https://wa.me/919865811796" target="_blank" rel="noopener">Bulk &amp; office buyers</a></li>
+        <li><a href="https://wa.me/919865811796" target="_blank" rel="noopener">WhatsApp enquiry</a></li>
+        <li><a href="project/contact.html">Contact &amp; directions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919865811796">+91 98658 11796</a></li>
+        <li>Mon–Sat · 10:30 am – 8:30 pm</li>
+        <li>8, Kadarkarai Nadar St, Theni</li>
+        <li><a href="https://wa.me/919865811796" target="_blank" rel="noopener">WhatsApp us →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2026 Wireless India · Theni, Tamil Nadu</span>
+    <span>Made with care for electronics lovers</span>
+  </div>
+</footer>
+
+<!-- Search overlay -->
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Product search">
+  <div class="search-modal">
+    <div class="search-modal-bar">
+      <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="search-input" placeholder='Try "multimeter", "soundbar", "HDMI cable"…' autocomplete="off" />
+      <button class="icon-btn" id="search-close" aria-label="Close search" style="width:36px;height:36px;border:none;background:none">
+        <svg class="i" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="search-results" id="search-results" role="listbox"></div>
+    <div class="search-footer">
+      <span><kbd>↑↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> select</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mn-head">
+    <a class="logo" href="#">
+      <span class="mark"><img src="project/assets/logo.svg" alt="" /></span>
+      <span>Wireless India</span>
+    </a>
+    <button class="icon-btn" id="menu-close" aria-label="Close menu">
+      <svg class="i" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mn-links">
+    <a href="project/category.html">All categories</a>
+    <a href="project/category.html">Sound Bars</a>
+    <a href="project/category.html">Bluetooth Speakers</a>
+    <a href="project/category.html">Keyboards &amp; Mice</a>
+    <a href="project/category.html">Multimeters</a>
+    <a href="project/category.html">ICs &amp; FETs</a>
+    <a href="project/category.html">Cables &amp; Wires</a>
+    <a href="project/category.html">Pendrives</a>
+    <a href="project/category.html">Power Strips</a>
+    <a href="project/category.html">Screwdrivers</a>
+    <a href="project/category.html" class="hot">● New arrivals</a>
+    <a href="project/contact.html">Visit shop</a>
+  </div>
+  <div class="mn-footer">
+    <a class="btn accent" href="https://wa.me/919865811796" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">
+      <svg class="i" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M3 21l2-5a9 9 0 1 1 4 4l-6 1z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</div>
+
+<script src="project/assets/data.js"></script>
+<script>
+// ── Wishlist ──
+const wishlist = new Set(JSON.parse(localStorage.getItem('wi-wishlist') || '[]'));
+
+function syncWishlistUI() {
+  const count = wishlist.size;
+  const el = document.getElementById('wishlist-count');
+  el.textContent = count;
+  el.style.display = count > 0 ? 'grid' : 'none';
+  document.querySelectorAll('[data-id]').forEach(btn => {
+    btn.classList.toggle('active', wishlist.has(btn.dataset.id));
+  });
+}
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-id]');
+  if (!btn) return;
+  e.preventDefault(); e.stopPropagation();
+  const id = btn.dataset.id;
+  wishlist.has(id) ? wishlist.delete(id) : wishlist.add(id);
+  localStorage.setItem('wi-wishlist', JSON.stringify([...wishlist]));
+  syncWishlistUI();
+});
+
+syncWishlistUI();
+
+// ── Search ──
+const overlay  = document.getElementById('search-overlay');
+const input    = document.getElementById('search-input');
+const results  = document.getElementById('search-results');
+let focusIdx   = -1;
+
+function openSearch() {
+  overlay.classList.add('open');
+  setTimeout(() => input.focus(), 50);
+  renderResults('');
+}
+function closeSearch() {
+  overlay.classList.remove('open');
+  input.value = '';
+  focusIdx = -1;
+}
+function renderResults(q) {
+  const all  = (window.WI && WI.featured) || [];
+  const hits = q.trim() === ''
+    ? all
+    : all.filter(p => [p.name, p.brand, p.cat, ...(p.specs || [])].join(' ').toLowerCase().includes(q.toLowerCase()));
+
+  focusIdx = -1;
+  if (!hits.length) {
+    results.innerHTML = `<div class="search-empty">No results for "<strong>${q}</strong>" — try a different keyword.</div>`;
+    return;
+  }
+  results.innerHTML = hits.map((p, i) => `
+    <a href="project/product.html" class="search-result" role="option" data-idx="${i}">
+      <div class="thumb"><img src="${p.image}" alt="${p.name}" loading="lazy" /></div>
+      <div class="info">
+        <div class="sname">${p.name}</div>
+        <div class="sbrand">${p.brand} · ${p.cat}</div>
+      </div>
+      <div class="sprice">${p.price}</div>
+    </a>
+  `).join('');
+}
+function moveFocus(dir) {
+  const items = results.querySelectorAll('.search-result');
+  if (!items.length) return;
+  items[focusIdx]?.classList.remove('focused');
+  focusIdx = (focusIdx + dir + items.length) % items.length;
+  items[focusIdx].classList.add('focused');
+  items[focusIdx].scrollIntoView({ block: 'nearest' });
+}
+
+document.getElementById('search-trigger').addEventListener('click', openSearch);
+document.getElementById('search-trigger').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openSearch(); } });
+document.getElementById('search-close').addEventListener('click', closeSearch);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeSearch(); });
+input.addEventListener('input', e => renderResults(e.target.value));
+input.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown')  { e.preventDefault(); moveFocus(1); }
+  if (e.key === 'ArrowUp')    { e.preventDefault(); moveFocus(-1); }
+  if (e.key === 'Enter' && focusIdx >= 0) results.querySelectorAll('.search-result')[focusIdx]?.click();
+});
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  if (e.key === 'Escape') closeSearch();
+});
+
+// ── Mobile nav ──
+document.getElementById('menu-open').addEventListener('click',  () => document.getElementById('mobile-nav').classList.add('open'));
+document.getElementById('menu-close').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+
+// ── Render featured grid ──
+(function() {
+  const grid = document.getElementById('featured-grid');
+  if (!window.WI) return;
+  WI.featured.slice(0, 8).forEach(p => {
+    const tagCls = p.tag === 'New' ? 'new' : (p.tag === 'Hot deal' || p.tag === 'Best deal' || p.tag === 'Bestseller') ? 'hot' : '';
+    const tagHtml = p.tag ? `<span class="tag ${tagCls}">${p.tag}</span>` : '';
+    const wasHtml = p.was ? `<span class="was">${p.was}</span>` : '';
+    grid.insertAdjacentHTML('beforeend', `
+      <a href="project/product.html" class="card">
+        ${tagHtml}
+        <button class="heart" data-id="${p.id}" aria-label="Add to wishlist">
+          <svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9.5C1 8 3 4.5 6.5 4.5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 7-2.5 5-9.5 9.5-9.5 9.5z"/></svg>
+        </button>
+        <div class="pimg"><img src="${p.image}" alt="${p.name}" loading="lazy" /></div>
+        <div class="body">
+          <div class="brand">${p.brand}</div>
+          <div class="name">${p.name}</div>
+          <div class="row">
+            <div class="price">${p.price} ${wasHtml}</div>
+            <div class="wa"><svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M3 21l2-5a9 9 0 1 1 4 4l-6 1z"/></svg> Enquire</div>
+          </div>
+        </div>
+      </a>
+    `);
+  });
+  syncWishlistUI();
+})();
+
+// ── Render categories ──
+(function() {
+  const grid = document.getElementById('cats-grid');
+  if (!window.WI) return;
+  WI.categories.slice(0, 8).forEach(c => {
+    grid.insertAdjacentHTML('beforeend', `
+      <a class="cat" href="project/category.html">
+        <span class="count">${c.count} items</span>
+        <span class="cat-name">${c.name}</span>
+        <span class="cat-blurb">${c.blurb}</span>
+        <span class="cat-img"><img src="${c.hero}" alt="${c.name}" loading="lazy" /></span>
+        <span class="arrow"><svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+    `);
+  });
+})();
+
+// ── Render arrivals ──
+(function() {
+  const ticker = document.getElementById('arrivals-ticker');
+  if (!window.WI) return;
+  WI.featured.slice(-6).forEach(a => {
+    ticker.insertAdjacentHTML('beforeend', `
+      <a href="project/product.html" class="arrival">
+        <div class="pimg"><img src="${a.image}" alt="${a.name}" loading="lazy" /></div>
+        <div class="brand">${a.brand}</div>
+        <div class="name">${a.name}</div>
+        <div class="price">${a.price}</div>
+      </a>
+    `);
+  });
+})();
+</script>
+</body>
+</html>

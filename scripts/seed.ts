@@ -9,7 +9,7 @@
  * Image uploads are de-duplicated by Sanity (content hash).
  */
 import { config as loadEnv } from "dotenv";
-loadEnv({ path: ".env.local" });
+loadEnv({ path: ".env" });
 
 import { createClient } from "@sanity/client";
 import { createReadStream } from "node:fs";

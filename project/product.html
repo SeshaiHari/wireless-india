@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AstroAI AM33D Digital Multimeter — Wireless India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --ink: #0e0e0c;
+    --ink-2: #45433e;
+    --ink-3: #8a8780;
+    --line: #e7e4dc;
+    --line-2: #f0ede5;
+    --accent: #ff5b1f;
+    --accent-soft: #fff1ea;
+    --whatsapp: #1f8a5b;
+  }
+  body { background: var(--bg); color: var(--ink); font-feature-settings: "ss01"; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
+  .mono { font-family: "JetBrains Mono", monospace; }
+
+  /* Util */
+  .util { background: var(--ink); color: #d8d4c9; font-size: 12px;}
+  .util .wrap { display:flex; justify-content:space-between; align-items:center; height: 34px;}
+
+  /* Header */
+  header.nav { position: sticky; top:0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--line);}
+  header.nav .wrap { display:grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items:center; height: 76px;}
+  .logo { display:flex; align-items:center; gap:10px; font-weight: 800; font-size: 22px; letter-spacing: -0.02em;}
+  .logo .mark { width: 36px; height: 36px; display:grid; place-items:center;}
+  .logo .mark img { width: 100%; height: 100%; object-fit: contain;}
+  .search {
+    display:flex; align-items:center; gap:10px;
+    background: var(--surface); border:1px solid var(--line);
+    border-radius: 999px; padding: 0 16px; height: 46px;
+    max-width: 560px; width: 100%; margin: 0 auto;
+  }
+  .search input { flex:1; border:none; outline:none; background:transparent; font-size: 14.5px;}
+  .search .kbd { font-family: "JetBrains Mono", monospace; font-size:11px; color: var(--ink-3); border:1px solid var(--line); padding: 2px 6px; border-radius: 6px;}
+  .nav-actions { display:flex; align-items:center; gap: 8px;}
+  .icon-btn { width: 42px; height: 42px; border-radius: 12px; display:grid; place-items:center; border: 1px solid var(--line); background: var(--surface); position: relative;}
+  .icon-btn:hover { background: var(--accent-soft); border-color: #f7d3bf;}
+  .icon-btn .num { position:absolute; top: -4px; right: -4px; background: var(--accent); color:#fff; font-size:10px; height: 16px; min-width:16px; padding: 0 4px; border-radius: 999px; display:grid; place-items:center; font-weight:600;}
+  .btn { height: 44px; padding: 0 18px; border-radius: 999px; background: var(--ink); color:#fff; font-weight: 600; font-size: 14px; display:inline-flex; align-items:center; gap: 8px;}
+  .btn.accent { background: var(--accent);}
+  .btn.wa { background: var(--whatsapp);}
+  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink);}
+
+  /* Sub-nav */
+  .subnav { border-bottom: 1px solid var(--line); background: var(--bg);}
+  .subnav .wrap { display:flex; gap: 8px; height: 50px; align-items: center; overflow-x: auto;}
+  .subnav a { padding: 8px 14px; font-size: 13.5px; color: var(--ink-2); border-radius: 999px; white-space: nowrap;}
+  .subnav a:hover { background: var(--surface); border: 1px solid var(--line);}
+  .subnav a.on { background: var(--ink); color: #fff;}
+
+  /* Breadcrumb */
+  .crumb { padding: 24px 0 8px; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink-3); letter-spacing: 0.04em;}
+  .crumb a { color: var(--ink-2);}
+  .crumb a:hover { color: var(--ink);}
+  .crumb .sep { margin: 0 8px; opacity: 0.5;}
+
+  /* Hero product layout */
+  .prod {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 40px;
+    padding: 16px 0 64px;
+  }
+
+  /* Gallery */
+  .gallery { display:flex; gap: 16px; align-items: flex-start;}
+  .thumbs { display:flex; flex-direction: column; gap: 10px; flex: none; width: 80px;}
+  .thumbs button {
+    width: 80px; aspect-ratio: 1;
+    background: var(--surface); border: 1.5px solid var(--line);
+    border-radius: 12px; padding: 0; overflow: hidden;
+    display:grid; place-items: center;
+    transition: border-color .15s ease;
+  }
+  .thumbs button.on { border-color: var(--ink);}
+  .thumbs button:hover { border-color: var(--ink-2);}
+  .thumbs button img { width: 70%; height: 70%; object-fit: contain; mix-blend-mode: multiply;}
+
+  .stage {
+    flex: 1;
+    background: linear-gradient(135deg, #ffffff 0%, #f4f1ea 100%);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    aspect-ratio: 1;
+    display: grid; place-items: center;
+    position: relative; overflow: hidden;
+  }
+  .stage img { max-width: 78%; max-height: 78%; object-fit: contain; mix-blend-mode: multiply;}
+  .stage .tag {
+    position: absolute; top: 18px; left: 18px;
+    background: var(--accent); color: #fff;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+    padding: 5px 9px; border-radius: 6px;
+  }
+  .stage .heart {
+    position: absolute; top: 14px; right: 14px;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--surface); border: 1px solid var(--line);
+    display:grid; place-items: center;
+  }
+  .stage .heart:hover { color: var(--accent); border-color: var(--accent);}
+  .stage .zoom-hint {
+    position: absolute; bottom: 14px; right: 14px;
+    font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.08em;
+    color: var(--ink-3); background: var(--surface);
+    padding: 5px 9px; border-radius: 6px;
+    border: 1px solid var(--line);
+  }
+
+  /* Info column */
+  .info { padding: 8px 0;}
+  .brand-row {
+    display:flex; align-items: center; gap: 12px;
+    font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
+  }
+  .brand-row a { color: var(--ink-2);}
+  .brand-row .stock {
+    margin-left: auto;
+    display:inline-flex; align-items: center; gap: 6px;
+    color: var(--whatsapp); font-weight: 600; font-size: 11px;
+  }
+  .brand-row .stock::before { content:""; width: 7px; height: 7px; border-radius: 50%; background: var(--whatsapp); box-shadow: 0 0 0 3px rgba(31,138,91,0.18);}
+
+  h1.title {
+    font-family: "Fraunces", serif; font-weight: 400;
+    font-size: clamp(36px, 4.4vw, 52px); line-height: 1; letter-spacing: -0.02em;
+    margin: 14px 0 12px;
+  }
+  h1.title em { font-style: italic; color: var(--accent);}
+
+  .rating {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; color: var(--ink-2);
+    margin-bottom: 22px;
+  }
+  .rating .stars { color: var(--accent); letter-spacing: 1px; font-size: 15px;}
+  .rating a { color: var(--ink-2); text-decoration: underline;}
+
+  /* Price block */
+  .price-block {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 22px;
+  }
+  .price-main {
+    display:flex; align-items: baseline; gap: 14px;
+    flex-wrap: wrap;
+  }
+  .price-main .now {
+    font-family: "Inter Tight", sans-serif;
+    font-size: 38px; font-weight: 700; letter-spacing: -0.01em;
+  }
+  .price-main .was {
+    font-size: 17px; color: var(--ink-3); text-decoration: line-through;
+  }
+  .price-main .save {
+    background: var(--accent); color: #fff;
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.08em;
+    padding: 4px 8px; border-radius: 6px;
+    font-weight: 600;
+  }
+  .price-block .tax { font-size: 12.5px; color: var(--ink-3); margin-top: 6px; font-family: "JetBrains Mono", monospace; letter-spacing: 0.02em;}
+
+  .price-block .ctas {
+    display:flex; gap: 8px; margin-top: 18px;
+  }
+  .price-block .ctas .btn { flex: 1; justify-content: center; height: 52px; font-size: 14px;}
+  .price-block .ctas .btn.wa { font-size: 14.5px;}
+  .price-block .note {
+    margin-top: 14px;
+    display:flex; align-items: center; gap: 10px;
+    font-size: 13px; color: var(--ink-2);
+    background: var(--accent-soft);
+    border: 1px solid #f7d3bf;
+    padding: 12px 14px; border-radius: 12px;
+  }
+  .price-block .note svg { color: var(--accent); flex: none;}
+
+  /* Highlights pills */
+  .pills {
+    display:flex; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 22px;
+  }
+  .pills .pill {
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 7px 12px; border-radius: 999px;
+    font-size: 13px; color: var(--ink-2);
+    display:inline-flex; align-items: center; gap: 6px;
+  }
+  .pills .pill svg { color: var(--whatsapp); flex: none;}
+
+  /* Key facts grid */
+  .facts {
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .facts .f {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 14px 16px;
+    display:flex; gap: 12px; align-items: flex-start;
+  }
+  .facts .f .ico {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--accent-soft); color: var(--accent);
+    display:grid; place-items: center; flex: none;
+  }
+  .facts .f h4 { margin: 0; font-size: 13.5px; font-weight: 600;}
+  .facts .f p { margin: 2px 0 0; font-size: 12.5px; color: var(--ink-2); line-height: 1.45;}
+
+  /* Trust strip */
+  .trust-strip {
+    display:flex; flex-direction: column; gap: 10px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+  .trust-strip .row {
+    display:flex; align-items: center; gap: 12px;
+    font-size: 13.5px; color: var(--ink-2);
+  }
+  .trust-strip .row svg { color: var(--ink); flex: none;}
+  .trust-strip .row b { color: var(--ink); font-weight: 600;}
+
+  /* SECTION BLOCKS BELOW */
+  section.block { padding: 56px 0; border-top: 1px solid var(--line);}
+  .block-head {
+    display:flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 28px; gap: 24px;
+  }
+  .block-head h2 {
+    font-family: "Fraunces", serif; font-weight: 400;
+    font-size: clamp(32px, 3.6vw, 44px); line-height: 1; letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .block-head h2 em { font-style: italic; color: var(--accent);}
+  .block-head .right { font-size: 13.5px; color: var(--ink-2); max-width: 380px;}
+
+  /* Description + specs */
+  .description-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+  }
+  .description p {
+    font-size: 15.5px; line-height: 1.65; color: var(--ink-2);
+    margin: 0 0 14px;
+  }
+  .description p:first-of-type::first-letter {
+    font-family: "Fraunces", serif;
+    font-size: 58px; font-weight: 400;
+    float: left; line-height: 0.85;
+    margin: 6px 10px 0 0;
+    color: var(--accent);
+  }
+  .description ul {
+    padding: 0; list-style: none;
+    margin: 18px 0 0;
+    display: grid; gap: 10px;
+  }
+  .description ul li {
+    display:flex; gap: 12px; font-size: 14.5px; color: var(--ink-2); align-items: flex-start;
+  }
+  .description ul li::before {
+    content: "+"; color: var(--accent); font-weight: 600; flex: none;
+    width: 18px; text-align: center;
+  }
+
+  .specs-card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 18px; padding: 0;
+    overflow: hidden; align-self: start;
+    position: sticky; top: 100px;
+  }
+  .specs-card .head {
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--line);
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .specs-card .head .sku { color: var(--ink);}
+  .specs-card dl { margin: 0; display: grid; grid-template-columns: 1fr 1.2fr;}
+  .specs-card dt, .specs-card dd { padding: 12px 22px; border-bottom: 1px solid var(--line-2); margin: 0; font-size: 13.5px;}
+  .specs-card dt { color: var(--ink-3); font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.02em;}
+  .specs-card dd { color: var(--ink); font-weight: 500;}
+  .specs-card dt:nth-last-of-type(1), .specs-card dd:nth-last-of-type(1) { border-bottom: none;}
+  .specs-card .foot {
+    padding: 16px 22px;
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+    font-size: 13px; color: var(--ink-2); line-height: 1.5;
+  }
+
+  /* Visit / promo callout */
+  .promo {
+    background: var(--ink); color: #fff;
+    border-radius: 28px; padding: 44px 48px;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px;
+    position: relative; overflow: hidden; align-items: center;
+  }
+  .promo::after {
+    content:""; position:absolute; right: -100px; top: -100px;
+    width: 380px; height: 380px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--accent), #b03a10 70%);
+    opacity: 0.6;
+  }
+  .promo .eye {
+    position: relative; z-index: 1;
+    display:inline-flex; align-items:center; gap: 8px;
+    font-family: "JetBrains Mono", monospace; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.18em; color: #ffd1bf;
+  }
+  .promo .eye::before { content:""; width:8px;height:8px;border-radius:50%; background:var(--accent);}
+  .promo h2 {
+    position: relative; z-index: 1;
+    font-family: "Fraunces", serif; font-weight: 400;
+    font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05;
+    margin: 12px 0 14px;
+  }
+  .promo h2 em { font-style: italic; color: var(--accent);}
+  .promo p { position: relative; z-index: 1; color: #c8c5bc; max-width: 460px; line-height: 1.55; margin: 0 0 22px;}
+  .promo .actions { position: relative; z-index: 1; display:flex; gap: 10px;}
+  .promo .actions .btn { height: 50px; padding: 0 22px;}
+
+  /* Related */
+  .grid-products { display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px;}
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 18px; padding: 14px; position: relative;
+    display:flex; flex-direction:column; gap: 12px;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    color: inherit; text-decoration: none;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -20px rgba(0,0,0,0.18); border-color: #d8d4c9;}
+  .card .tag { position:absolute; top: 22px; left: 22px; background: var(--ink); color:#fff; font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 6px; z-index: 1;}
+  .card .tag.hot { background: var(--accent);}
+  .card .tag.new { background: var(--whatsapp);}
+  .card .pimg {
+    width: 100%; aspect-ratio: 1;
+    background: linear-gradient(180deg, #faf8f3, #efece5);
+    border-radius: 12px;
+    display: grid; place-items: center; overflow: hidden;
+  }
+  .card .pimg img { max-width: 78%; max-height: 78%; object-fit: contain; mix-blend-mode: multiply;}
+  .card .brand-t { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);}
+  .card .nm { font-size: 15px; font-weight: 600; line-height: 1.25; margin: 2px 0 4px; min-height: 38px;}
+  .card .row { display:flex; align-items: center; justify-content: space-between; margin-top: auto;}
+  .card .price { font-size: 16px; font-weight: 700;}
+  .card .price .was { font-size: 12px; color: var(--ink-3); text-decoration: line-through; font-weight: 500; margin-left: 4px;}
+
+  /* Footer */
+  footer { background: var(--ink); color:#d8d4c9; margin-top: 48px;}
+  footer .wrap { padding: 56px 28px 24px; display:grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px;}
+  footer h4 { color:#fff; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 16px; font-family: "JetBrains Mono", monospace;}
+  footer ul { list-style:none; padding:0; margin:0; display:grid; gap: 10px; font-size: 14px;}
+  footer .brandblock .logo { color:#fff;}
+  footer .brandblock p { color:#a09c93; line-height: 1.55; max-width: 320px; margin-top: 14px;}
+  footer .bottom { border-top: 1px solid #2a2824; padding: 20px 28px; display:flex; justify-content:space-between; font-size: 12px; color:#807c72;}
+
+  .i { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;}
+</style>
+</head>
+<body data-screen-label="Product — AstroAI AM33D">
+
+<!-- Util -->
+<div class="util">
+  <div class="wrap">
+    <span>⚡ Free delivery in Theni for orders above ₹999 · 🔧 Components, audio, repairs &amp; tools — under one roof</span>
+    <span>+91 98658 11796 · WhatsApp · Visit shop</span>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="mark"><img src="assets/logo.svg" alt="Wireless India"/></span><span>Wireless India</span></a>
+    <div class="search">
+      <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input placeholder="Search 2,000+ items — &quot;multimeter&quot;, &quot;HDMI 2m&quot;, &quot;HCF4011&quot;, &quot;Zeb soundbar&quot;..." />
+      <span class="kbd">⌘ K</span>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" title="Wishlist">
+        <svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9.5C1 8 3 4.5 6.5 4.5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 7-2.5 5-9.5 9.5-9.5 9.5z"/></svg>
+        <span class="num">3</span>
+      </button>
+      <button class="icon-btn" title="Account"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg></button>
+      <a href="contact.html" class="btn">Visit shop ↗</a>
+    </div>
+  </div>
+</header>
+
+<!-- Sub-nav -->
+<div class="subnav">
+  <div class="wrap">
+    <a href="category.html">Sound Bars</a>
+    <a href="category.html">Bluetooth Speakers</a>
+    <a href="category.html">Keyboards &amp; Mice</a>
+    <a href="category.html" class="on">Multimeters</a>
+    <a href="category.html">ICs &amp; FETs</a>
+    <a href="category.html">Cables &amp; Wires</a>
+    <a href="category.html">Pendrives</a>
+    <a href="category.html">Power Strips</a>
+    <a href="category.html">Screwdrivers</a>
+    <a href="category.html">CCTV PSU</a>
+  </div>
+</div>
+
+<!-- Breadcrumb -->
+<div class="wrap">
+  <div class="crumb">
+    <a href="index.html">Home</a>
+    <span class="sep">/</span>
+    <a href="category.html">Test &amp; measurement</a>
+    <span class="sep">/</span>
+    <a href="category.html">Multimeters</a>
+    <span class="sep">/</span>
+    <span>AstroAI AM33D</span>
+  </div>
+</div>
+
+<!-- Product hero -->
+<section class="wrap">
+  <div class="prod">
+
+    <!-- Gallery -->
+    <div class="gallery">
+      <div class="thumbs">
+        <button class="on"><img src="assets/products/multimeters/astroai-am33d.jpg" alt=""/></button>
+        <button><img src="assets/products/multimeters/dt830d.webp" alt=""/></button>
+        <button><img src="assets/products/multimeters/astroai-am33d.jpg" alt=""/></button>
+        <button><img src="assets/products/multimeters/dt830d.webp" alt=""/></button>
+      </div>
+      <div class="stage">
+        <span class="tag">New arrival · -25%</span>
+        <button class="heart"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9.5C1 8 3 4.5 6.5 4.5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 7-2.5 5-9.5 9.5-9.5 9.5z"/></svg></button>
+        <img id="main-img" src="assets/products/multimeters/astroai-am33d.jpg" alt="AstroAI AM33D Digital Multimeter"/>
+        <span class="zoom-hint">Click to zoom</span>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="info">
+      <div class="brand-row">
+        <a href="category.html">AstroAI</a>
+        <span>·</span>
+        <a href="category.html">Multimeters</a>
+        <span class="stock">In stock today</span>
+      </div>
+
+      <h1 class="title">AstroAI AM33D <em>Digital Multimeter</em></h1>
+
+      <div class="rating">
+        <span class="stars">★★★★★</span>
+        <span>4.7</span>
+        <a href="#">128 reviews</a>
+        <span>·</span>
+        <a href="#">Compare</a>
+      </div>
+
+      <div class="pills">
+        <span class="pill"><svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="m5 12 5 5L20 7"/></svg> Auto-ranging</span>
+        <span class="pill"><svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="m5 12 5 5L20 7"/></svg> AC / DC voltage</span>
+        <span class="pill"><svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="m5 12 5 5L20 7"/></svg> Continuity beep</span>
+        <span class="pill"><svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="m5 12 5 5L20 7"/></svg> Battery test</span>
+        <span class="pill"><svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="m5 12 5 5L20 7"/></svg> Backlit display</span>
+      </div>
+
+      <!-- Price -->
+      <div class="price-block">
+        <div class="price-main">
+          <span class="now">₹1,499</span>
+          <span class="was">₹1,999</span>
+          <span class="save">SAVE 25%</span>
+        </div>
+        <div class="tax">Inclusive of all taxes · GST invoice on request</div>
+
+        <div class="ctas">
+          <a class="btn wa" href="https://wa.me/919865811796?text=Hi%20Wireless%20India%2C%20I%27m%20interested%20in%20the%20AstroAI%20AM33D%20Digital%20Multimeter%20(%E2%82%B91%2C499).%20Is%20it%20available%3F" target="_blank" rel="noopener">
+            <svg class="i" viewBox="0 0 24 24"><path d="M3 21l2-5a9 9 0 1 1 4 4l-6 1z"/></svg>
+            Enquire on WhatsApp
+          </a>
+          <a class="btn ghost" href="tel:+919865811796">
+            <svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+            Call
+          </a>
+        </div>
+
+        <div class="note">
+          <svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v6m0 3v.5"/></svg>
+          <div>
+            <b>Showcase mode.</b> Online ordering is coming — for now, message us on WhatsApp and we'll confirm stock, set it aside, or deliver in Theni.
+          </div>
+        </div>
+      </div>
+
+      <!-- Key facts -->
+      <div class="facts">
+        <div class="f">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M12 2 4 6v6c0 5 8 10 8 10s8-5 8-10V6z"/></svg></div>
+          <div><h4>1-year brand warranty</h4><p>Replacement handled at the counter — bring the box.</p></div>
+        </div>
+        <div class="f">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px;"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 18v2m10-2v2"/></svg></div>
+          <div><h4>Same-day delivery in Theni</h4><p>Order by 6 pm. Out-of-town: 2–4 days by courier.</p></div>
+        </div>
+        <div class="f">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="m5 12 5 5L20 7"/></svg></div>
+          <div><h4>Test before you buy</h4><p>Bring a 9V battery — try it at the counter.</p></div>
+        </div>
+        <div class="f">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M21 8H3M21 8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2m18 0v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8"/><path d="M7 14h4"/></svg></div>
+          <div><h4>GST invoice</h4><p>For office / bulk buyers. Just ask at the counter.</p></div>
+        </div>
+      </div>
+
+      <!-- Trust strip -->
+      <div class="trust-strip">
+        <div class="row">
+          <svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><b>On display at the shop:</b> 8, Kadarkarai Nadar St, Theni</div>
+        </div>
+        <div class="row">
+          <svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div><b>Reply time:</b> Usually within 15 minutes (Mon–Sat · 10:30 am – 8:30 pm)</div>
+        </div>
+        <div class="row">
+          <svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M3 12h18M12 3l9 9-9 9-9-9z"/></svg>
+          <div><b>Genuine stock:</b> Sourced directly. Bring your old multimeter — we'll exchange against the new one.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Description + Specs -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>About this <em>multimeter.</em></h2>
+      <div class="right">An auto-ranging pocket digital multimeter — for the curious tinkerer, the home electrician, and the repair counter that just needs a beep and a number.</div>
+    </div>
+
+    <div class="description-grid">
+      <div class="description">
+        <p>The AstroAI AM33D is a 4000-count auto-ranging digital multimeter that earns its place in a small toolbox. It reads voltage, current, resistance and continuity quickly and without the guesswork — flip to ohms, and it picks the range for you. Backlit, with a low-battery indicator and a sturdy holster, it survives a drop off a workbench.</p>
+        <p>We stock it because it's the meter we'd hand a friend who's just getting started, or a regular customer who needs a reliable second meter for the field bag. Bring it back any time for a battery swap or a probe re-tip.</p>
+
+        <ul>
+          <li>Reads <b>AC/DC voltage up to 600V</b> — wall outlets, batteries, USB.</li>
+          <li><b>10A current range</b> with separate jack — safe for most workshop circuits.</li>
+          <li><b>Continuity beep</b> is loud enough to hear over a ceiling fan.</li>
+          <li><b>Diode &amp; transistor (hFE)</b> test for repair work.</li>
+          <li>Comes with <b>silicone test leads</b>, 9V battery and a paper quick-reference card.</li>
+          <li>Two-year service life on the 9V if used reasonably — auto-off after 15 min.</li>
+        </ul>
+      </div>
+
+      <aside class="specs-card">
+        <div class="head">
+          <span>Specifications</span>
+          <span class="sku">SKU · WI-MM-0114</span>
+        </div>
+        <dl>
+          <dt>Brand</dt><dd>AstroAI</dd>
+          <dt>Model</dt><dd>AM33D</dd>
+          <dt>Type</dt><dd>Digital, auto-ranging</dd>
+          <dt>Display</dt><dd>4000-count, backlit LCD</dd>
+          <dt>DC Voltage</dt><dd>0 – 600 V</dd>
+          <dt>AC Voltage</dt><dd>0 – 600 V</dd>
+          <dt>DC Current</dt><dd>0 – 10 A</dd>
+          <dt>Resistance</dt><dd>0 – 40 MΩ</dd>
+          <dt>Continuity</dt><dd>Yes, audible beep</dd>
+          <dt>Diode test</dt><dd>Yes</dd>
+          <dt>Battery</dt><dd>9V (included)</dd>
+          <dt>Safety</dt><dd>CAT III 600V</dd>
+          <dt>Weight</dt><dd>360 g (with holster)</dd>
+          <dt>Warranty</dt><dd>1 year (brand)</dd>
+          <dt>In the box</dt><dd>Meter, leads, 9V battery, holster, manual</dd>
+        </dl>
+        <div class="foot">
+          Specs as listed by manufacturer. Real-world readings may vary slightly with temperature &amp; battery level.
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Visit promo -->
+<section class="block">
+  <div class="wrap">
+    <div class="promo">
+      <div>
+        <span class="eye">Want to hold one first?</span>
+        <h2>Come down<br/>to the <em>shop.</em></h2>
+        <p>We keep this one on the demo bench plugged into a test board. Bring a battery you want to test, or a circuit you've been chasing — the floor staff will help you sanity-check it before you buy.</p>
+        <div class="actions">
+          <a class="btn accent" href="contact.html">Visit details
+            <svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+          <a class="btn ghost" style="color:#fff; border-color:#3a3833;" href="https://wa.me/919865811796" target="_blank" rel="noopener">
+            <svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M3 21l2-5a9 9 0 1 1 4 4l-6 1z"/></svg>
+            WhatsApp us
+          </a>
+        </div>
+      </div>
+      <div style="position: relative; z-index: 1;">
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid #2a2824; border-radius: 18px; padding: 26px; font-size: 14px; line-height: 1.6; color: #d8d4c9;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #ffd1bf; margin-bottom: 14px;">Shop hours</div>
+          <div style="display: grid; grid-template-columns: 1fr auto; row-gap: 8px; column-gap: 24px;">
+            <span style="color: #c8c5bc;">Mon — Fri</span><span>10:30 am – 8:30 pm</span>
+            <span style="color: #c8c5bc;">Saturday</span><span>10:30 am – 8:30 pm</span>
+            <span style="color: #c8c5bc;">Sunday</span><span style="color: #807c72;">Closed</span>
+          </div>
+          <div style="border-top: 1px solid #2a2824; margin-top: 18px; padding-top: 16px; font-size: 13px;">
+            <b style="color:#fff;">+91 98658 11796</b><br/>
+            <span style="color: #a09c93;">8, Kadarkarai Nadar St, Theni — 625531</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related products -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>You might<br/><em>also like.</em></h2>
+      <a href="category.html" style="font-size: 14px; padding: 10px 18px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface);">All multimeters →</a>
+    </div>
+    <div class="grid-products" id="related"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="brandblock">
+      <a class="logo" href="index.html"><span class="mark"><img src="assets/logo.svg" alt="Wireless India"/></span><span style="color:#fff;">Wireless India</span></a>
+      <p>Components, audio &amp; accessories — under one roof. Theni's small shop with the big stockroom.</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="category.html">Sound Bars &amp; Speakers</a></li>
+        <li><a href="category.html">Keyboards &amp; Mice</a></li>
+        <li><a href="category.html">Multimeters &amp; Tools</a></li>
+        <li><a href="category.html">Cables &amp; Wires</a></li>
+        <li><a href="category.html">ICs, FETs &amp; Components</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Help</h4>
+      <ul>
+        <li><a href="contact.html">Visit shop</a></li>
+        <li>Bulk &amp; trade buyers</li>
+        <li>Repairs &amp; service</li>
+        <li>Warranty claim</li>
+        <li><a href="https://wa.me/919865811796" target="_blank">WhatsApp enquiry</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919865811796">+91 98658 11796</a></li>
+        <li>Mon–Sat · 10:30–8:30</li>
+        <li>8, Kadarkarai Nadar St, Theni</li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2026 Wireless India</span>
+    <span>Product · AstroAI AM33D</span>
+  </div>
+</footer>
+
+<script>
+  // Build related products
+  const related = [
+    { brand:"Generic",  name:"DT-830D Pocket Digital Multimeter",   price:"₹349",   was:"₹499",   tag:"Combo",      image:"assets/products/multimeters/dt830d.webp" },
+    { brand:"Stanley",  name:"Cushion-Grip Flathead Screwdriver",   price:"₹199",   was:null,     tag:null,         image:"assets/products/screwdrivers/stanley-flathead.webp" },
+    { brand:"Generic",  name:"Jumper Wire Set, 40 pcs",             price:"₹179",   was:"₹249",   tag:null,         image:"assets/products/cables/jumper-wires.jpg" },
+    { brand:"STMicro",  name:"HCF4011BE Quad NAND IC (DIP-14)",     price:"₹18",    was:null,     tag:null,         image:"assets/products/ics-fets/ic-dip-pair.jpg" },
+  ];
+  const grid = document.getElementById('related');
+  related.forEach(p => {
+    const tagHtml = p.tag ? `<span class="tag ${p.tag === 'Combo' ? 'hot' : ''}">${p.tag}</span>` : '';
+    const wasHtml = p.was ? `<span class="was">${p.was}</span>` : '';
+    grid.insertAdjacentHTML('beforeend', `
+      <a class="card" href="product.html">
+        ${tagHtml}
+        <div class="pimg"><img src="${p.image}" alt="${p.name}" loading="lazy"/></div>
+        <div class="brand-t">${p.brand}</div>
+        <div class="nm">${p.name}</div>
+        <div class="row">
+          <span class="price">${p.price} ${wasHtml}</span>
+          <svg class="i" viewBox="0 0 24 24" style="width:16px;height:16px; color: var(--ink-3);"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </div>
+      </a>
+    `);
+  });
+
+  // Thumbnail switcher (basic — same image now, real product would have multiple angles)
+  const thumbs = document.querySelectorAll('.thumbs button');
+  const mainImg = document.getElementById('main-img');
+  thumbs.forEach(b => {
+    b.addEventListener('click', () => {
+      thumbs.forEach(t => t.classList.remove('on'));
+      b.classList.add('on');
+      const img = b.querySelector('img');
+      if (img) mainImg.src = img.src;
+    });
+  });
+</script>
+</body>
+</html>

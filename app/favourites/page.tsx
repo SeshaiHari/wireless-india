@@ -21,7 +21,7 @@ export default async function FavouritesPage() {
     <>
       <SiteHeader categories={categories} shop={shop} variant="sub" />
 
-      <div className="wrap">
+      <main id="main" className="wrap">
         <div className="crumb">
           <Link href="/">Home</Link>
           <span className="sep">/</span>
@@ -31,7 +31,7 @@ export default async function FavouritesPage() {
           <h1>Your wishlist.</h1>
         </div>
         <FavouritesShelf allProducts={allProducts} />
-      </div>
+      </main>
 
       <SiteFooter categories={categories} shop={shop} />
     </>

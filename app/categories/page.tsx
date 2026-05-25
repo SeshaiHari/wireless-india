@@ -22,7 +22,7 @@ export default async function CategoriesPage() {
     <>
       <SiteHeader categories={categories} shop={shop} variant="sub" />
 
-      <div className="wrap">
+      <main id="main" className="wrap">
         <div className="crumb">
           <Link href="/">Home</Link>
           <span className="sep">/</span>
@@ -40,7 +40,7 @@ export default async function CategoriesPage() {
             <CategoryCard key={c.id} category={c} />
           ))}
         </div>
-      </div>
+      </main>
 
       <SiteFooter categories={categories} shop={shop} />
     </>

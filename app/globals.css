@@ -6,13 +6,17 @@
   --color-surface: #ffffff;
   --color-ink: #0e0e0c;
   --color-ink-2: #45433e;
-  --color-ink-3: #8a8780;
+  /* Muted text. Darkened from #8a8780 to clear WCAG AA (4.5:1) on bg/surface. */
+  --color-ink-3: #6e6b64;
   --color-line: #e7e4dc;
   --color-line-2: #f0ede5;
-  --color-accent: #ff5b1f;
+  /* Brand orange, darkened from #ff5b1f so it clears AA (4.5:1) vs white both
+     as text on light surfaces and as white text on accent fills. */
+  --color-accent: #c8400d;
   --color-accent-2: #1a5cff;
   --color-accent-soft: #fff1ea;
-  --color-ok: #1f8a5b;
+  /* Darkened from #1f8a5b (4.33) so white text on it clears AA. */
+  --color-ok: #198152;
 
   /* Anchor tokens used across the UI:
      --color-fill  : brand-dark fill (footer, primary pills, dark hero/CTA blocks)
@@ -65,6 +69,30 @@
     background: none;
     color: inherit;
   }
+  /* Visible keyboard focus indicator (mouse clicks stay clean via :focus-visible) */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-2);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* Skip link — hidden until focused, then pinned to the top-left */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--color-ink);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+.skip-link:focus-visible {
+  top: 8px;
 }
 
 /* Centered page container used across every page */

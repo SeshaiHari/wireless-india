@@ -62,7 +62,12 @@ export default function RootLayout({
       lang="en"
       className={`${interTight.variable} ${instrumentSerif.variable} ${fraunces.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

@@ -66,7 +66,7 @@ export default async function CategoryPage({
         activeCategoryId={category.id}
       />
 
-      <div className="wrap">
+      <main id="main" className="wrap">
         <div className="crumb">
           <Link href="/">Home</Link>
           <span className="sep">/</span>
@@ -97,7 +97,7 @@ export default async function CategoryPage({
           allCategories={categories}
           countsByCategory={countsByCategory}
         />
-      </div>
+      </main>
 
       <SiteFooter categories={categories} shop={shop} />
     </>

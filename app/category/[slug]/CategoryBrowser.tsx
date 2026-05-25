@@ -79,9 +79,9 @@ export function CategoryBrowser({
       {/* Sidebar */}
       <aside className={`${styles.filters} ${showFilters ? styles.filtersOpen : ""}`}>
         <div>
-          <h4>
+          <h2>
             Browse categories <span>{allCategories.length}</span>
-          </h4>
+          </h2>
           <div className={styles.catQuick}>
             {allCategories.map((c) => (
               <Link
@@ -97,7 +97,7 @@ export function CategoryBrowser({
 
         {brandCounts.length > 0 && (
           <div>
-            <h4>
+            <h2>
               Brand
               {selectedBrands.size > 0 && (
                 <button
@@ -107,7 +107,7 @@ export function CategoryBrowser({
                   Clear
                 </button>
               )}
-            </h4>
+            </h2>
             <div className={styles.group}>
               {brandCounts.map(([b, n]) => (
                 <label key={b}>
@@ -125,7 +125,7 @@ export function CategoryBrowser({
         )}
 
         <div>
-          <h4>Price (₹)</h4>
+          <h2>Price (₹)</h2>
           <div className={styles.priceRow}>
             <input
               type="number"
@@ -151,7 +151,7 @@ export function CategoryBrowser({
         </div>
 
         <div>
-          <h4>Availability</h4>
+          <h2>Availability</h2>
           <div className={styles.group}>
             <label>
               <input
@@ -168,8 +168,8 @@ export function CategoryBrowser({
         </div>
       </aside>
 
-      {/* Main */}
-      <main>
+      {/* Results column (page-level <main> lives in the page wrapper) */}
+      <div>
         {hasActiveFilters && (
           <div className={styles.activeChips}>
             {[...selectedBrands].map((b) => (
@@ -216,7 +216,11 @@ export function CategoryBrowser({
               {showFilters ? "Hide filters" : "Filters"}
               {hasActiveFilters ? " •" : ""}
             </button>
-            <select value={sort} onChange={(e) => setSort(e.target.value)}>
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value)}
+              aria-label="Sort products"
+            >
               <option value="recommended">Sort: Recommended</option>
               <option value="price-asc">Price: low to high</option>
               <option value="price-desc">Price: high to low</option>
@@ -239,7 +243,7 @@ export function CategoryBrowser({
             </button>
           </p>
         )}
-      </main>
+      </div>
     </div>
   );
 }

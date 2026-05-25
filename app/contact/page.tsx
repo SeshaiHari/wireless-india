@@ -69,6 +69,7 @@ export default async function ContactPage() {
       <JsonLd data={localBusinessJsonLd(shop)} />
       <SiteHeader categories={categories} shop={shop} variant="sub" />
 
+      <main id="main">
       {/* Hero */}
       <section className={styles.hero}>
         <div className="wrap">
@@ -253,6 +254,7 @@ export default async function ContactPage() {
           </div>
         </div>
       </section>
+      </main>
 
       <SiteFooter categories={categories} shop={shop} />
     </>

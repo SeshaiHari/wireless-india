@@ -555,7 +555,7 @@
   place-items: center;
   flex: none;
 }
-.trustItem h4 {
+.trustItem h3 {
   margin: 0 0 4px;
   font-size: 15px;
   font-weight: 700;

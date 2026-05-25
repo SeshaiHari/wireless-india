@@ -45,7 +45,7 @@
 }
 
 /* Sidebar */
-.filters h4 {
+.filters h2 {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.16em;
@@ -55,8 +55,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 700;
 }
-.filters h4:first-child {
+.filters h2:first-child {
   margin-top: 0;
 }
 .clear {

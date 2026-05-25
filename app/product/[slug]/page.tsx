@@ -88,6 +88,7 @@ export default async function ProductPage({
         activeCategoryId={product.categoryId}
       />
 
+      <main id="main">
       <div className="wrap">
         <div className="crumb">
           <Link href="/">Home</Link>
@@ -191,7 +192,7 @@ export default async function ProductPage({
                     <Icon name={f.icon as "shield"} size={18} />
                   </div>
                   <div>
-                    <h4>{f.h}</h4>
+                    <h2>{f.h}</h2>
                     <p>{f.p}</p>
                   </div>
                 </div>
@@ -339,6 +340,7 @@ export default async function ProductPage({
           </div>
         </section>
       )}
+      </main>
 
       <SiteFooter categories={categories} shop={shop} />
     </>

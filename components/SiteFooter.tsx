@@ -27,7 +27,7 @@ export function SiteFooter({
         </div>
 
         <div>
-          <h4>Shop</h4>
+          <h2>Shop</h2>
           <ul>
             {categories.slice(0, 5).map((c) => (
               <li key={c.id}>
@@ -38,7 +38,7 @@ export function SiteFooter({
         </div>
 
         <div>
-          <h4>Help</h4>
+          <h2>Help</h2>
           <ul>
             <li>
               <Link href="/contact">Visit shop</Link>
@@ -55,7 +55,7 @@ export function SiteFooter({
         </div>
 
         <div>
-          <h4>Contact</h4>
+          <h2>Contact</h2>
           <ul>
             <li>
               <a href={telHref(shop.phone)}>{shop.phone}</a>

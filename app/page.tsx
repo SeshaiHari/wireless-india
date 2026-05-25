@@ -59,6 +59,7 @@ export default async function HomePage() {
       <JsonLd data={localBusinessJsonLd(shop)} />
       <SiteHeader categories={categories} shop={shop} variant="home" />
 
+      <main id="main">
       {/* ===== Hero bento ===== */}
       <section className={styles.hero}>
         <div className="wrap">
@@ -360,7 +361,7 @@ export default async function HomePage() {
                   <Icon name={t.icon as "bag"} />
                 </div>
                 <div>
-                  <h4>{t.h}</h4>
+                  <h3>{t.h}</h3>
                   <p>{t.p}</p>
                 </div>
               </div>
@@ -419,6 +420,7 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+      </main>
 
       <SiteFooter categories={categories} shop={shop} />
     </>

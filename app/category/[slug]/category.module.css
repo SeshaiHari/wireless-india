@@ -179,6 +179,19 @@
   outline: none;
   font-family: inherit;
 }
+/* Mobile-only toggle that reveals the filter sidebar (hidden on desktop) */
+.filterToggle {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--color-ink);
+}
 
 /* Active chips */
 .activeChips {
@@ -231,10 +244,18 @@
   .shell {
     grid-template-columns: 1fr;
   }
+  /* Collapse the sidebar so products appear first; reveal via the toggle */
   .filters {
+    display: none;
+  }
+  .filtersOpen {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0 32px;
+    margin-bottom: 24px;
+  }
+  .filterToggle {
+    display: inline-flex;
   }
   .grid {
     grid-template-columns: repeat(2, 1fr);
@@ -244,8 +265,12 @@
   .grid {
     grid-template-columns: 1fr;
   }
-  .filters {
+  .filtersOpen {
     grid-template-columns: 1fr;
+  }
+  .toolbar {
+    flex-wrap: wrap;
+    gap: 12px;
   }
   .titleRow {
     flex-direction: column;

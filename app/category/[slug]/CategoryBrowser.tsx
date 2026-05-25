@@ -35,6 +35,7 @@ export function CategoryBrowser({
   const [maxPrice, setMaxPrice] = useState<number | "">("");
   const [inStockOnly, setInStockOnly] = useState(false);
   const [sort, setSort] = useState("recommended");
+  const [showFilters, setShowFilters] = useState(false);
 
   const toggleBrand = (b: string) =>
     setSelectedBrands((prev) => {
@@ -76,7 +77,7 @@ export function CategoryBrowser({
   return (
     <div className={styles.shell}>
       {/* Sidebar */}
-      <aside className={styles.filters}>
+      <aside className={`${styles.filters} ${showFilters ? styles.filtersOpen : ""}`}>
         <div>
           <h4>
             Browse categories <span>{allCategories.length}</span>
@@ -206,6 +207,15 @@ export function CategoryBrowser({
             </span>
           </div>
           <div className={styles.right}>
+            <button
+              type="button"
+              className={styles.filterToggle}
+              onClick={() => setShowFilters((v) => !v)}
+              aria-expanded={showFilters}
+            >
+              {showFilters ? "Hide filters" : "Filters"}
+              {hasActiveFilters ? " •" : ""}
+            </button>
             <select value={sort} onChange={(e) => setSort(e.target.value)}>
               <option value="recommended">Sort: Recommended</option>
               <option value="price-asc">Price: low to high</option>

@@ -43,6 +43,9 @@
   height: 130px;
   display: grid;
   place-items: center;
+  padding: 12px;
+  border-radius: 18px;
+  background: var(--color-stage);
   opacity: 0.95;
 }
 .img img {
@@ -57,7 +60,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--color-ink);
+  background: var(--color-fill);
   color: #fff;
   display: grid;
   place-items: center;

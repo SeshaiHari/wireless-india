@@ -111,6 +111,7 @@ export default async function ProductPage({
             images={product.images}
             name={product.name}
             badge={stageBadge}
+            productId={product.id}
           />
 
           <div className={styles.info}>

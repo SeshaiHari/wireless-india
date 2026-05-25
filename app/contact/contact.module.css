@@ -198,7 +198,7 @@
   padding: 0 0 96px;
 }
 .enquireCard {
-  background: var(--color-ink);
+  background: var(--color-fill);
   color: #fff;
   border-radius: 28px;
   padding: 56px;

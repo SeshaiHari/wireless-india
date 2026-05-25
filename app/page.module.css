@@ -33,7 +33,7 @@
   position: absolute;
   top: 16px;
   left: 16px;
-  background: var(--color-ink);
+  background: var(--color-fill);
   color: #fff;
   font-size: 11px;
   font-weight: 600;
@@ -52,7 +52,7 @@
 /* Dark brand tile */
 .brand {
   grid-row: span 2;
-  background: var(--color-ink);
+  background: var(--color-fill);
   color: #fff;
   padding: 28px;
   justify-content: space-between;
@@ -66,7 +66,11 @@
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, var(--color-accent), #b03a10 70%);
+  background: radial-gradient(
+    circle at 35% 35%,
+    var(--color-accent),
+    color-mix(in srgb, var(--color-accent) 55%, #000) 70%
+  );
   opacity: 0.85;
 }
 .eye {
@@ -86,7 +90,7 @@
   height: 8px;
   border-radius: 50%;
   background: var(--color-accent);
-  box-shadow: 0 0 0 4px rgba(255, 91, 31, 0.25);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 25%, transparent);
 }
 .brand h1 {
   position: relative;
@@ -151,8 +155,12 @@
 .feature {
   grid-row: span 2;
   padding: 52px 28px 28px;
-  background: linear-gradient(135deg, #fff4ec 0%, #ffdcc4 100%);
-  border-color: #f7d3bf;
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-soft) 0%,
+    color-mix(in srgb, var(--color-accent) 22%, var(--color-surface)) 100%
+  );
+  border-color: var(--color-line);
 }
 .metaRow {
   position: relative;
@@ -201,6 +209,10 @@
   display: grid;
   place-items: center;
   position: relative;
+  /* Light stage so the multiply product image works on any theme (incl. dark) */
+  background: var(--color-stage);
+  border-radius: 16px;
+  padding: 8px;
 }
 .imgArea img {
   max-width: 96%;
@@ -233,7 +245,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--color-ink);
+  background: var(--color-fill);
   color: #fff;
   height: 36px;
   padding: 0 14px;
@@ -270,7 +282,7 @@
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: linear-gradient(180deg, #faf8f3, #efece5);
+  background: var(--color-stage);
   border-radius: 12px;
 }
 .smallImg img {
@@ -385,7 +397,7 @@
 
 /* ============ Promo ============ */
 .promo {
-  background: var(--color-ink);
+  background: var(--color-fill);
   color: #fff;
   border-radius: 28px;
   padding: 56px;
@@ -489,7 +501,7 @@
 .arrivalImg {
   aspect-ratio: 1;
   margin-bottom: 12px;
-  background: linear-gradient(180deg, #faf8f3, #efece5);
+  background: var(--color-stage);
   border-radius: var(--radius-card);
   display: grid;
   place-items: center;

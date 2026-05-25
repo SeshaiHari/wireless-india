@@ -14,6 +14,13 @@
   --color-accent-soft: #fff1ea;
   --color-ok: #1f8a5b;
 
+  /* Anchor tokens used across the UI:
+     --color-fill  : brand-dark fill (footer, primary pills, dark hero/CTA blocks)
+     --color-stage : light backdrop behind product photos (they use mix-blend: multiply,
+                     which only works over a light surface) */
+  --color-fill: #0e0e0c;
+  --color-stage: #f4f1ea;
+
   --radius-card: 14px;
   --radius-bento: 22px;
 
@@ -121,7 +128,7 @@
   height: 44px;
   padding: 0 18px;
   border-radius: 999px;
-  background: var(--color-ink);
+  background: var(--color-fill);
   color: #fff;
   font-weight: 600;
   font-size: 14px;

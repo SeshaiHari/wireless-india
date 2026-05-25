@@ -60,35 +60,6 @@
   height: 100%;
   object-fit: contain;
 }
-.search {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-  border-radius: 999px;
-  padding: 0 16px;
-  height: 46px;
-  max-width: 560px;
-  width: 100%;
-  margin: 0 auto;
-}
-.search input {
-  flex: 1;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: 14.5px;
-  color: var(--color-ink);
-}
-.kbd {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--color-ink-3);
-  border: 1px solid var(--color-line);
-  padding: 2px 6px;
-  border-radius: 6px;
-}
 .actions {
   display: flex;
   align-items: center;
@@ -149,17 +120,22 @@
   background: var(--color-surface);
   border: 1px solid var(--color-line);
 }
-.on {
-  background: var(--color-ink);
+.subnavRow a.on {
+  background: var(--color-fill);
   color: #fff;
 }
 
+/* Mobile search icon — hidden on desktop (SearchModal's bar handles it) */
+.mobileSearchBtn {
+  display: none;
+}
+
 @media (max-width: 860px) {
-  .search {
-    display: none;
-  }
   .navRow {
     grid-template-columns: auto auto;
     justify-content: space-between;
+  }
+  .mobileSearchBtn {
+    display: grid;
   }
 }

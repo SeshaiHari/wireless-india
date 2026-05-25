@@ -21,7 +21,7 @@
 .thumbs button {
   width: 80px;
   aspect-ratio: 1;
-  background: var(--color-surface);
+  background: var(--color-stage);
   border: 1.5px solid var(--color-line);
   border-radius: 12px;
   padding: 0;
@@ -44,7 +44,7 @@
 }
 .stage {
   flex: 1;
-  background: linear-gradient(135deg, #ffffff 0%, #f4f1ea 100%);
+  background: var(--color-stage);
   border: 1px solid var(--color-line);
   border-radius: 22px;
   aspect-ratio: 1;
@@ -407,7 +407,7 @@
 
 /* Visit promo */
 .promo {
-  background: var(--color-ink);
+  background: var(--color-fill);
   color: #fff;
   border-radius: 28px;
   padding: 44px 48px;

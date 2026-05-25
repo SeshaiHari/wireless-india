@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Product } from "@/lib/types";
 import { Icon } from "@/components/Icon";
+import { FavouriteButton } from "@/components/FavouriteButton";
 import styles from "./ProductCard.module.css";
 
 type Variant = "default" | "withSpecs" | "compact";
@@ -23,9 +24,7 @@ export function ProductCard({
   return (
     <Link href={`/product/${id}`} className={styles.card}>
       {tag && <span className={`${styles.tag} ${tagClass(tag)}`}>{tag}</span>}
-      <span className={styles.heart}>
-        <Icon name="heart" />
-      </span>
+      <FavouriteButton productId={id} className={styles.heart} />
 
       <div className={styles.pimg}>
         <img src={images[0]} alt={name} loading="lazy" />

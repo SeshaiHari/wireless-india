@@ -1,17 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Icon } from "@/components/Icon";
+import { FavouriteButton } from "@/components/FavouriteButton";
 import styles from "./product.module.css";
 
 export function ProductGallery({
   images,
   name,
   badge,
+  productId,
 }: {
   images: string[];
   name: string;
   badge?: string | null;
+  productId: string;
 }) {
   const [active, setActive] = useState(0);
   // Always show at least 1 thumb; pad to a few for the design's rail feel.
@@ -35,9 +37,7 @@ export function ProductGallery({
       )}
       <div className={styles.stage}>
         {badge && <span className={styles.tag}>{badge}</span>}
-        <span className={styles.heart}>
-          <Icon name="heart" />
-        </span>
+        <FavouriteButton productId={productId} className={styles.heart} />
         <img src={images[active]} alt={name} />
         <span className={styles.zoomHint}>Showcase</span>
       </div>

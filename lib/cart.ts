@@ -1,6 +1,6 @@
 // Client-side cart, persisted in localStorage (same pattern as lib/favourites.ts).
 // Only product ids + quantities are stored; names and prices are always read
-// fresh from the catalog (Sanity or seed), so CMS price edits show up in the cart.
+// fresh from the catalog (Payload or seed), so CMS price edits show up in the cart.
 
 import { useSyncExternalStore } from "react";
 

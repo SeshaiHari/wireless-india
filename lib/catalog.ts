@@ -5,14 +5,16 @@ import type {
   ShopSettings,
 } from "@/lib/types";
 import * as seed from "@/lib/data/seed";
-import { sanityConfigured } from "@/lib/sanity/config";
-import * as sanity from "@/lib/sanity/queries";
+import { payloadConfigured } from "@/lib/payload/config";
+
+// Loaded lazily so seed-only builds never touch the database.
+const cms = () => import("@/lib/payload/queries");
 
 // ---------------------------------------------------------------------------
 // Catalog facade — the ONLY module pages/components import for content.
 //
-// Every function is async so the data source can swap freely. When Sanity env
-// vars are present we read from the CMS; otherwise we fall back to the local
+// Every function is async so the data source can swap freely. When Payload's
+// DATABASE_URL is set we read from the CMS; otherwise we fall back to the local
 // seed so the site renders end-to-end before any backend is configured.
 // This is the "park & pick later" seam: changing the source is a one-file edit.
 // ---------------------------------------------------------------------------
@@ -20,12 +22,12 @@ import * as sanity from "@/lib/sanity/queries";
 const byOrder = <T extends { order: number }>(a: T, b: T) => a.order - b.order;
 
 export async function getShopSettings(): Promise<ShopSettings> {
-  if (sanityConfigured) return sanity.getShopSettings();
+  if (payloadConfigured) return (await cms()).getShopSettings();
   return seed.shopSettings;
 }
 
 export async function getCategories(): Promise<Category[]> {
-  if (sanityConfigured) return sanity.getCategories();
+  if (payloadConfigured) return (await cms()).getCategories();
   return [...seed.categories].sort(byOrder);
 }
 
@@ -35,12 +37,12 @@ export async function getCategory(slug: string): Promise<Category | null> {
 }
 
 export async function getBrands(): Promise<Brand[]> {
-  if (sanityConfigured) return sanity.getBrands();
+  if (payloadConfigured) return (await cms()).getBrands();
   return [...seed.brands].sort(byOrder);
 }
 
 export async function getAllProducts(): Promise<Product[]> {
-  if (sanityConfigured) return sanity.getAllProducts();
+  if (payloadConfigured) return (await cms()).getAllProducts();
   return seed.products;
 }
 

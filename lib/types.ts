@@ -1,6 +1,6 @@
 // Shared domain types for the Wireless India catalog.
 // These are the shapes the rest of the app consumes, regardless of whether the
-// data comes from Sanity or the local seed fallback (see lib/data + lib/sanity).
+// data comes from Payload CMS or the local seed fallback (see lib/data + lib/payload).
 
 export type ProductTag =
   | "New"

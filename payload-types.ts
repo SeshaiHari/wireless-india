@@ -221,6 +221,10 @@ export interface Category {
   id: number;
   name: string;
   /**
+   * Untick to hide this category and every product in it from the site. Nothing is deleted.
+   */
+  visible?: boolean | null;
+  /**
    * Used in the page URL. Leave blank to generate from the name.
    */
   slug: string;
@@ -383,6 +387,7 @@ export interface ProductsSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   name?: T;
+  visible?: T;
   slug?: T;
   blurb?: T;
   claimedCount?: T;

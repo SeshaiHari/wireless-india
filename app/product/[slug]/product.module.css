@@ -200,7 +200,7 @@
   gap: 8px;
   margin-top: 18px;
 }
-.ctas .btn {
+.ctas :global(.btn) {
   flex: 1;
   justify-content: center;
   height: 52px;
@@ -552,4 +552,23 @@
   .related {
     grid-template-columns: 1fr;
   }
+}
+
+/* Quantity + add to cart row */
+.ctas + .ctas {
+  margin-top: 8px;
+}
+.ctas button:global(.btn) {
+  border: 0;
+  cursor: pointer;
+}
+.addedMsg {
+  margin: 10px 0 0;
+  min-height: 1.4em;
+  font-size: 13px;
+  color: var(--color-ok);
+  font-weight: 600;
+}
+.addedMsg a {
+  text-decoration: underline;
 }

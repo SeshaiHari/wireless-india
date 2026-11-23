@@ -14,3 +14,8 @@ export function discountPct(
   if (!before || !now || before <= now) return null;
   return Math.round((1 - now / before) * 100);
 }
+
+/** Format a rupee amount for display, e.g. 12998 → "₹12,998". */
+export function formatINR(amount: number): string {
+  return `₹${Math.round(amount).toLocaleString("en-IN")}`;
+}

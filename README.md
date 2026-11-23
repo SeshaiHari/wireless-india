@@ -3,8 +3,10 @@
 Showcase website for **Wireless India**, an electronics shop in Theni (sound bars,
 Bluetooth speakers, multimeters, ICs, cables, pendrives, power strips, tools…).
 
-It's a **catalog + enquiry** site, not a store: every "buy" action is a WhatsApp
-or phone enquiry. Cart/checkout is intentionally parked for later.
+It's a **catalog + WhatsApp ordering** site: customers add products (with
+quantities) to a cart, then send the whole order to the shop as one pre-filled
+WhatsApp message. There's no online payment; the shop confirms stock and price
+on WhatsApp.
 
 ## Stack
 
@@ -75,6 +77,7 @@ app/
   categories/              All-categories grid
   category/[slug]/         Category listing + live brand/price/sort filters
   product/[slug]/          Product detail (gallery, specs, WhatsApp/Call CTAs)
+  cart/                    Cart: quantities, totals, "Send order on WhatsApp"
   contact/                 Visit info, map, WhatsApp-prefill enquiry form, FAQ
   studio/[[...tool]]/      Embedded Sanity Studio
   api/revalidate/          Sanity webhook → revalidateTag("catalog")
@@ -83,6 +86,7 @@ lib/
   catalog.ts               Data facade (Sanity ⟷ seed fallback)
   data/seed.ts             Local catalog (also the seed source)
   sanity/                  client, image, GROQ queries, config
+  cart.ts                  Cart store (localStorage, ids + qty only) + useCart()
   types.ts  wa.ts  price.ts  jsonld.ts  site.ts
 sanity/schemaTypes/        shopSettings, category, brand, product
 scripts/seed.ts            One-off: push seed → Sanity
@@ -94,7 +98,9 @@ design/                    Original Claude Design handoff (reference only)
 - **Marketing numbers** (category counts like "1380", hero "2,400+ items") are
   editable copy fields in Sanity, *not* computed from real SKUs — by design, so
   the original design's numbers survive. Edit them in Studio.
-- **Parked ecommerce UI** — search bar, wishlist hearts, account icon, cart
-  badges are present visually but inert in v1. Only browsing + WhatsApp enquiry
-  are wired.
+- **Cart** — stored in the visitor's browser (`localStorage`, key `wi-cart`).
+  Only product ids and quantities are saved; names and prices are always read
+  from the catalog, so price edits in Sanity show up in existing carts. The
+  WhatsApp message is built in `lib/wa.ts` (`orderMessage`). There's no payment
+  or stock reservation: the shop confirms on WhatsApp.
 - Set `NEXT_PUBLIC_SITE_URL` in production for correct sitemap/JSON-LD URLs.

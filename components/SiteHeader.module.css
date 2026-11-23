@@ -144,3 +144,14 @@
     display: grid;
   }
 }
+
+/* Phones: make room for search, wishlist and cart icons. The CTA pill is
+   duplicated by the nav row / "Visit shop" link in the utility bar. */
+@media (max-width: 480px) {
+  .actions {
+    gap: 6px;
+  }
+  .actions > :global(.btn) {
+    display: none;
+  }
+}

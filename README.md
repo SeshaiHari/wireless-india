@@ -52,7 +52,8 @@ npm run lint                 # eslint
 ## Deploy (Vercel)
 
 1. Vercel → Storage → create **Neon Postgres** and **Blob**, connect both to the
-   project (adds `DATABASE_URL` and `BLOB_READ_WRITE_TOKEN`).
+   project (adds `DATABASE_URL` and `BLOB_STORE_ID` or `BLOB_READ_WRITE_TOKEN`;
+   `payload/blobStorage.ts` supports both).
 2. Add `PAYLOAD_SECRET` (long random string).
 3. Deploy. The `vercel-build` script runs `payload migrate` before `next build`
    (skipped when `DATABASE_URL` is missing, so the site builds on the seed catalog).
@@ -72,7 +73,8 @@ Commit the migration; it runs on the next deploy.
 
 ## Moving content from Sanity (one-off)
 
-`npm run migrate:sanity` copies every published Sanity document — shop settings,
+On Vercel: log in at `/admin`, then open `/api/migrate-sanity` and press the
+button. Locally: `npm run migrate:sanity`. Either way it copies every published Sanity document — shop settings,
 brands, categories, products and all their images (crop applied, hotspot kept as
 focal point) — into Payload. Set `SANITY_PROJECT_ID`, `SANITY_DATASET`
 (and `SANITY_READ_TOKEN` for a private dataset) plus the Payload env vars. It's

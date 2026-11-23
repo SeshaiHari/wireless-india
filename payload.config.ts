@@ -2,7 +2,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildConfig } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import sharp from "sharp";
 import { Users } from "./payload/collections/Users";
 import { Media } from "./payload/collections/Media";
@@ -10,6 +9,7 @@ import { Categories } from "./payload/collections/Categories";
 import { Brands } from "./payload/collections/Brands";
 import { Products } from "./payload/collections/Products";
 import { ShopSettings } from "./payload/globals/ShopSettings";
+import { blobStorage } from "./payload/blobStorage";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -30,14 +30,5 @@ export default buildConfig({
     push: false,
   }),
   sharp,
-  plugins: [
-    vercelBlobStorage({
-      // Without a token (local dev) uploads fall back to ./media on disk.
-      enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
-      alwaysInsertFields: true, // same DB schema with or without the token
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-      collections: { media: { disablePayloadAccessControl: true } },
-      clientUploads: true,
-    }),
-  ],
+  plugins: [blobStorage()],
 });

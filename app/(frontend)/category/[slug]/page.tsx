@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import {
   getAllProducts,
   getCategories,
   getCategory,
   getProductsByCategory,
   getShopSettings,
+  isSingleCategory,
 } from "@/lib/catalog";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -47,6 +48,9 @@ export default async function CategoryPage({
   ]);
 
   if (!category) notFound();
+  // One category: the home page shows its products, without the filters
+  // and category sidebar that look empty with a single shelf.
+  if (isSingleCategory(categories)) redirect("/");
 
   const countsByCategory = allProducts.reduce<Record<string, number>>(
     (acc, p) => {

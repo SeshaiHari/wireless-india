@@ -13,9 +13,11 @@ import styles from "./cart.module.css";
 export function CartView({
   allProducts,
   whatsapp,
+  browseHref = "/categories",
 }: {
   allProducts: Product[];
   whatsapp: string;
+  browseHref?: string;
 }) {
   const cart = useCart();
   const [customer, setCustomer] = useState({ name: "", phone: "", note: "" });
@@ -40,7 +42,7 @@ export function CartView({
         </span>
         <h2>Your cart is empty</h2>
         <p>Add products with the quantity you need, then order them all on WhatsApp.</p>
-        <Link href="/categories" className="btn">
+        <Link href={browseHref} className="btn">
           Browse products
         </Link>
       </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Category, ShopSettings } from "@/lib/types";
+import { isSingleCategory } from "@/lib/catalog";
 import { telHref, waLink } from "@/lib/wa";
 import styles from "./SiteFooter.module.css";
 
@@ -29,11 +30,27 @@ export function SiteFooter({
         <div>
           <h2>Shop</h2>
           <ul>
-            {categories.slice(0, 5).map((c) => (
-              <li key={c.id}>
-                <Link href={`/category/${c.id}`}>{c.name}</Link>
-              </li>
-            ))}
+            {isSingleCategory(categories) ? (
+              <>
+                <li>
+                  <Link href="/#products">
+                    {categories[0] ? `All ${categories[0].name}` : "All products"}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/cart">Your cart</Link>
+                </li>
+                <li>
+                  <Link href="/favourites">Wishlist</Link>
+                </li>
+              </>
+            ) : (
+              categories.slice(0, 5).map((c) => (
+                <li key={c.id}>
+                  <Link href={`/category/${c.id}`}>{c.name}</Link>
+                </li>
+              ))
+            )}
           </ul>
         </div>
 

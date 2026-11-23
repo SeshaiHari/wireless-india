@@ -81,3 +81,23 @@ export async function getRelatedProducts(
   );
   return [...sameCat, ...others].slice(0, limit);
 }
+
+// ---------------------------------------------------------------------------
+// Single-category mode.
+//
+// When fewer than two categories are visible on the site, category browsing
+// (the "All categories" page, category menus, filters) looks empty. Pages use
+// these helpers to switch to a focused layout: the home page lists the
+// products directly and category navigation is hidden. Turning a second
+// category's "Visible on site" toggle back on restores the normal layout.
+// ---------------------------------------------------------------------------
+
+/** True when the shop has fewer than two visible categories. */
+export function isSingleCategory(categories: Category[]): boolean {
+  return categories.length < 2;
+}
+
+/** Where "browse products" links should point. */
+export function browseHref(categories: Category[]): string {
+  return isSingleCategory(categories) ? "/#products" : "/categories";
+}

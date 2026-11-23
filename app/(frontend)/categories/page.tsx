@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getCategories, getShopSettings } from "@/lib/catalog";
+import { redirect } from "next/navigation";
+import { getCategories, getShopSettings, isSingleCategory } from "@/lib/catalog";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CategoryCard } from "@/components/CategoryCard";
@@ -17,6 +18,9 @@ export default async function CategoriesPage() {
     getCategories(),
     getShopSettings(),
   ]);
+
+  // One category: the home page already lists every product.
+  if (isSingleCategory(categories)) redirect("/");
 
   return (
     <>

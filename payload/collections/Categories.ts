@@ -1,0 +1,24 @@
+import type { CollectionConfig } from "payload";
+import { catalogHooks } from "../hooks";
+import { slugField } from "../slug";
+
+export const Categories: CollectionConfig = {
+  slug: "categories",
+  admin: { useAsTitle: "name", defaultColumns: ["name", "slug", "order"], group: "Catalog" },
+  access: { read: () => true },
+  defaultSort: "order",
+  hooks: catalogHooks,
+  fields: [
+    { name: "name", type: "text", required: true },
+    slugField(),
+    { name: "blurb", type: "text" },
+    {
+      name: "claimedCount",
+      label: "Claimed item count",
+      type: "number",
+      admin: { description: "Marketing count shown on cards — not computed from real SKUs." },
+    },
+    { name: "heroImage", label: "Hero image", type: "upload", relationTo: "media" },
+    { name: "order", label: "Sort order", type: "number" },
+  ],
+};

@@ -1,138 +1,79 @@
 /**
- * One-off seed: pushes the local catalog (lib/data/seed.ts) into Sanity,
- * uploading every product/category image as a Sanity asset.
+ * Loads the local seed catalog (lib/data/seed.ts) into Payload, uploading the
+ * images from public/products. Handy for a fresh local database.
  *
- * Run once after creating your Sanity project + write token:
  *   npm run seed
  *
- * Idempotent: uses deterministic _ids, so re-running updates in place.
- * Image uploads are de-duplicated by Sanity (content hash).
+ * Safe to re-run: upserts by slug / name / filename.
  */
-import { config as loadEnv } from "dotenv";
-loadEnv({ path: ".env" });
-
-import { createClient } from "@sanity/client";
-import { createReadStream } from "node:fs";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { getPayload } from "payload";
+import config from "../payload.config";
 import { shopSettings, categories, brands, products } from "../lib/data/seed";
+import { makeImporter, type ImageSource } from "./lib/importer";
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
-const token = process.env.SANITY_API_WRITE_TOKEN;
+const MIME: Record<string, string> = { ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".svg": "image/svg+xml" };
 
-if (!projectId || !token) {
-  console.error(
-    "Missing env. Set NEXT_PUBLIC_SANITY_PROJECT_ID and SANITY_API_WRITE_TOKEN in .env.local",
-  );
-  process.exit(1);
-}
-
-const client = createClient({
-  projectId,
-  dataset,
-  token,
-  apiVersion: "2024-10-01",
-  useCdn: false,
+const local = (publicPath: string, alt?: string): ImageSource => ({
+  filename: `seed-${publicPath.replace(/^\/+/, "").replace(/[/\\]/g, "-")}`,
+  alt,
+  load: async () => ({
+    data: await readFile(path.join(process.cwd(), "public", publicPath)),
+    mimetype: MIME[path.extname(publicPath).toLowerCase()] ?? "application/octet-stream",
+  }),
 });
 
-const slugify = (s: string) =>
-  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-const brandId = (name: string) => `brand-${slugify(name)}`;
-const catDocId = (id: string) => `category-${id}`;
-const prodDocId = (id: string) => `product-${id}`;
+const payload = await getPayload({ config });
+const { media, upsert } = makeImporter(payload);
 
-async function uploadImage(publicPath: string) {
-  const abs = path.join(process.cwd(), "public", publicPath);
-  const asset = await client.assets.upload("image", createReadStream(abs), {
-    filename: path.basename(publicPath),
-  });
-  return { _type: "image" as const, asset: { _type: "reference" as const, _ref: asset._id } };
+await payload.updateGlobal({ slug: "shop-settings", data: { ...shopSettings } });
+console.log("✓ shop settings");
+
+const brandOrder = new Map(brands.map((b) => [b.name, b.order]));
+const brandIds = new Map<string, number>();
+for (const name of new Set([...brands.map((b) => b.name), ...products.map((p) => p.brand)])) {
+  brandIds.set(name, await upsert("brands", "name", name, { name, order: brandOrder.get(name) ?? 99 }));
 }
+console.log(`✓ ${brandIds.size} brands`);
 
-async function run() {
-  // Shop settings (singleton)
-  await client.createOrReplace({
-    _id: "shopSettings",
-    _type: "shopSettings",
-    name: shopSettings.name,
-    tagline: shopSettings.tagline,
-    phone: shopSettings.phone,
-    whatsapp: shopSettings.whatsapp,
-    address: shopSettings.address,
-    hours: shopSettings.hours,
-    mapEmbedUrl: shopSettings.mapEmbedUrl,
-    marqueeLines: shopSettings.marqueeLines,
-    heroStats: shopSettings.heroStats.map((s, i) => ({ _key: `s${i}`, ...s })),
-  });
-  console.log("✓ shopSettings");
-
-  // Brands — union of curated list + any brand names used by products
-  const brandOrder = new Map(brands.map((b) => [b.name, b.order]));
-  const allBrandNames = Array.from(
-    new Set([...brands.map((b) => b.name), ...products.map((p) => p.brand)]),
-  );
-  for (const name of allBrandNames) {
-    await client.createOrReplace({
-      _id: brandId(name),
-      _type: "brand",
-      name,
-      order: brandOrder.get(name) ?? 99,
-    });
-  }
-  console.log(`✓ ${allBrandNames.length} brands`);
-
-  // Categories (with hero image)
-  for (const c of categories) {
-    const heroImage = c.hero ? await uploadImage(c.hero) : undefined;
-    await client.createOrReplace({
-      _id: catDocId(c.id),
-      _type: "category",
+const categoryIds = new Map<string, number>();
+for (const c of categories) {
+  categoryIds.set(
+    c.id,
+    await upsert("categories", "slug", c.id, {
       name: c.name,
-      slug: { _type: "slug", current: c.id },
+      slug: c.id,
       blurb: c.blurb,
       claimedCount: c.claimedCount,
       order: c.order,
-      ...(heroImage ? { heroImage } : {}),
-    });
-    console.log(`✓ category ${c.id}`);
-  }
-
-  // Products
-  for (const p of products) {
-    const images = [];
-    for (let i = 0; i < p.images.length; i++) {
-      const img = await uploadImage(p.images[i]);
-      images.push({ ...img, _key: `img-${i}` });
-    }
-    await client.createOrReplace({
-      _id: prodDocId(p.id),
-      _type: "product",
-      name: p.name,
-      slug: { _type: "slug", current: p.id },
-      brand: { _type: "reference", _ref: brandId(p.brand) },
-      category: { _type: "reference", _ref: catDocId(p.categoryId) },
-      price: p.price,
-      ...(p.was ? { wasPrice: p.was } : {}),
-      ...(p.tag ? { tag: p.tag } : {}),
-      images,
-      specs: p.specs,
-      sku: p.sku,
-      inStock: p.inStock,
-      featured: p.featured,
-      ...(p.featuredOrder ? { featuredOrder: p.featuredOrder } : {}),
-      ...(p.description ? { description: p.description } : {}),
-      ...(p.specTable
-        ? { specTable: p.specTable.map((r, i) => ({ _key: `r${i}`, ...r })) }
-        : {}),
-      ...(p.highlights ? { highlights: p.highlights } : {}),
-    });
-    console.log(`✓ product ${p.id}`);
-  }
-
-  console.log("\nSeed complete.");
+      heroImage: c.hero ? await media(local(c.hero, c.name)) : null,
+    }),
+  );
 }
+console.log(`✓ ${categoryIds.size} categories`);
 
-run().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+for (const p of products) {
+  const images: number[] = [];
+  for (const img of p.images) images.push((await media(local(img, p.name)))!);
+  await upsert("products", "slug", p.id, {
+    name: p.name,
+    slug: p.id,
+    brand: brandIds.get(p.brand) ?? null,
+    category: categoryIds.get(p.categoryId),
+    price: p.price,
+    wasPrice: p.was,
+    tag: p.tag,
+    images,
+    specs: p.specs,
+    sku: p.sku,
+    inStock: p.inStock,
+    featured: p.featured,
+    featuredOrder: p.featuredOrder ?? null,
+    description: p.description ?? null,
+    specTable: p.specTable ?? [],
+    highlights: p.highlights ?? [],
+  });
+}
+console.log(`✓ ${products.length} products\nSeed complete.`);
+process.exit(0);

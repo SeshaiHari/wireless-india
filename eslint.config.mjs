@@ -22,6 +22,9 @@ const eslintConfig = defineConfig([
     // Generated/excluded from lint
     "design/**",
     "scripts/**",
+    "payload/migrations/**",
+    "payload-types.ts",
+    "app/(payload)/admin/importMap.js",
   ]),
 ]);
 

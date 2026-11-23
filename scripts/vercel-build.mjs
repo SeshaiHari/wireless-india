@@ -9,7 +9,22 @@ try {
   process.loadEnvFile(".env");
 } catch {}
 
+// Print which settings are present (names only, never values) to make a
+// failed deploy easy to diagnose from the build log.
+const vars = ["DATABASE_URL", "PAYLOAD_SECRET", "BLOB_STORE_ID", "BLOB_READ_WRITE_TOKEN"];
+console.log(
+  `[wireless-india] env (${process.env.VERCEL_ENV ?? "local"}): ` +
+    vars.map((v) => `${v}=${process.env[v] ? "set" : "missing"}`).join(", "),
+);
+
 if (process.env.DATABASE_URL) {
+  if (!process.env.PAYLOAD_SECRET) {
+    console.error(
+      `[wireless-india] PAYLOAD_SECRET is missing for the "${process.env.VERCEL_ENV}" environment. ` +
+        "Add it in Vercel → Settings → Environment Variables (tick Preview and Production).",
+    );
+    process.exit(1);
+  }
   run("npx payload migrate");
 } else {
   console.log("DATABASE_URL not set — skipping Payload migrations (site will use the seed catalog).");

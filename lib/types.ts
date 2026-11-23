@@ -26,6 +26,8 @@ export interface ShopSettings {
   marqueeLines: string[];
   /** Hero stat tiles, e.g. { value: "2,400+", label: "Items in stock" } */
   heroStats: { value: string; label: string }[];
+  /** Optional shop-front photo URL (uploaded in admin). Empty when not set. */
+  shopfrontPhotoUrl?: string;
 }
 
 export interface Category {

@@ -340,7 +340,21 @@ export default async function HomePage() {
               </a>
             </div>
             <div className={styles.promoSide}>
-              <div className={styles.promoPh}>Drop a shop photo here →</div>
+              {/* Uses the shop-front photo from admin when one is uploaded,
+                  otherwise the bundled WhatsApp illustration. */}
+              <div className={styles.promoPh}>
+                <img
+                  src={shop.shopfrontPhotoUrl || "/whatsapp-promo.webp"}
+                  alt={
+                    shop.shopfrontPhotoUrl
+                      ? `${shop.name} shop front`
+                      : `A WhatsApp chat with ${shop.name}: a customer sends a photo of their TV and gets a soundbar recommendation with price and stock`
+                  }
+                  width={1600}
+                  height={2000}
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>

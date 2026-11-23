@@ -150,3 +150,24 @@
 .arrow {
   color: var(--color-ink-3);
 }
+.add {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-ok);
+  background: transparent;
+  color: var(--color-ok);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+.add:hover {
+  background: var(--color-ok);
+  color: #fff;
+}

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Category, ShopSettings } from "@/lib/types";
 import { Icon } from "@/components/Icon";
 import { WishlistCount } from "@/components/WishlistCount";
+import { CartCount } from "@/components/CartCount";
 import { SearchModal } from "@/components/SearchModal";
 import { MobileSearchButton } from "@/components/MobileSearchButton";
 import styles from "./SiteHeader.module.css";
@@ -59,6 +60,10 @@ export function SiteHeader({
             <Link href="/favourites" className="icon-btn" title="Wishlist" aria-label="Wishlist">
               <Icon name="heart" />
               <WishlistCount />
+            </Link>
+            <Link href="/cart" className="icon-btn" title="Cart" aria-label="Cart">
+              <Icon name="bag" />
+              <CartCount />
             </Link>
             {variant === "home" ? (
               <Link href="/categories" className="btn">

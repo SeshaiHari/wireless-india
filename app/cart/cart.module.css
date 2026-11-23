@@ -1,0 +1,227 @@
+.head {
+  padding: 28px 0 28px;
+}
+.head h1 {
+  font-family: var(--font-display-alt);
+  font-weight: 400;
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin: 8px 0 12px;
+}
+.head p {
+  color: var(--color-ink-2);
+  font-size: 15px;
+  max-width: 60ch;
+  margin: 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 28px;
+  align-items: start;
+  padding-bottom: 80px;
+}
+
+.lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-line);
+}
+.line {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+.thumb {
+  width: 88px;
+  height: 88px;
+  border-radius: 14px;
+  background: var(--color-stage);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.thumb img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.brand {
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+  font-weight: 600;
+}
+.name {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 2px 0 4px;
+  color: var(--color-ink);
+}
+.name:hover {
+  text-decoration: underline;
+}
+.unit {
+  font-size: 13px;
+  color: var(--color-ink-2);
+}
+.oos {
+  color: var(--color-accent);
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.lineTotal {
+  min-width: 84px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 16px;
+}
+.remove {
+  background: none;
+  border: 0;
+  padding: 4px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--color-ink-3);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.remove:hover {
+  color: var(--color-accent);
+}
+
+.summary {
+  position: sticky;
+  top: 96px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.summary h2 {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+.sumRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--color-ink-2);
+}
+.sumTotal {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-ink);
+  padding-top: 10px;
+  border-top: 1px solid var(--color-line-2);
+}
+.fine {
+  font-size: 12.5px;
+  color: var(--color-ink-3);
+  margin: 0 0 6px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink-2);
+}
+.field em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--color-ink-3);
+}
+.field input,
+.field textarea {
+  font: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  resize: vertical;
+}
+.send {
+  justify-content: center;
+  height: 52px;
+  margin-top: 6px;
+}
+.clear {
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 13px;
+  color: var(--color-ink-3);
+  text-decoration: underline;
+  cursor: pointer;
+  align-self: center;
+}
+
+.empty {
+  padding: 60px 0 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.emptyIcon {
+  color: var(--color-ink-3);
+}
+.empty h2 {
+  font-family: var(--font-display-alt);
+  font-weight: 400;
+  font-size: 28px;
+  margin: 8px 0 0;
+}
+.empty p {
+  color: var(--color-ink-2);
+  font-size: 15px;
+  margin: 0 0 16px;
+}
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .summary {
+    position: static;
+  }
+}
+@media (max-width: 600px) {
+  .line {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 12px;
+  }
+  .thumb {
+    width: 72px;
+    height: 72px;
+  }
+  .controls {
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .lineTotal {
+    min-width: 0;
+  }
+}

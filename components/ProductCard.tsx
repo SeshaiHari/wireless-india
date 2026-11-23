@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Product } from "@/lib/types";
 import { Icon } from "@/components/Icon";
 import { FavouriteButton } from "@/components/FavouriteButton";
+import { AddToCartButton } from "@/components/AddToCartButton";
 import styles from "./ProductCard.module.css";
 
 type Variant = "default" | "withSpecs" | "compact";
@@ -53,10 +54,7 @@ export function ProductCard({
           {variant === "compact" ? (
             <Icon name="arrowRight" size={16} className={styles.arrow} />
           ) : (
-            <div className={styles.wa}>
-              <Icon name="whatsapp" size={14} />
-              Enquire
-            </div>
+            <AddToCartButton productId={id} productName={name} className={styles.add} />
           )}
         </div>
       </div>

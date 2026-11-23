@@ -11,7 +11,7 @@ import {
 } from "@/lib/catalog";
 import type { Product, SpecRow } from "@/lib/types";
 import { discountPct } from "@/lib/price";
-import { productEnquiryLink, telHref, waLink } from "@/lib/wa";
+import { waLink } from "@/lib/wa";
 import { productJsonLd } from "@/lib/jsonld";
 import { Icon } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
@@ -19,6 +19,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductGallery } from "./ProductGallery";
+import { ProductBuyBox } from "./ProductBuyBox";
 import styles from "./product.module.css";
 
 export async function generateStaticParams() {
@@ -155,26 +156,18 @@ export default async function ProductPage({
                 Inclusive of all taxes · GST invoice on request
               </div>
 
-              <div className={styles.ctas}>
-                <a
-                  className="btn wa"
-                  href={productEnquiryLink(shop.whatsapp, product)}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <Icon name="whatsapp" /> Enquire on WhatsApp
-                </a>
-                <a className="btn ghost" href={telHref(shop.phone)}>
-                  <Icon name="phone" /> Call
-                </a>
-              </div>
+              <ProductBuyBox
+                product={product}
+                whatsapp={shop.whatsapp}
+                phone={shop.phone}
+              />
 
               <div className={styles.note}>
                 <Icon name="info" size={18} />
                 <div>
-                  <b>Showcase mode.</b> Online ordering is coming — for now,
-                  message us on WhatsApp and we&apos;ll confirm stock, set it
-                  aside, or deliver in Theni.
+                  <b>Order on WhatsApp.</b> Add items to your cart, then send
+                  the whole order in one message. We&apos;ll confirm stock, set
+                  it aside, or deliver in Theni.
                 </div>
               </div>
             </div>

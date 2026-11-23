@@ -458,6 +458,11 @@
   font-size: 11px;
   letter-spacing: 0.04em;
 }
+.promoPh img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /* ============ New arrivals ============ */
 .arrivals {

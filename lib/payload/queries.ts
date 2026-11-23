@@ -19,7 +19,7 @@ function mediaUrl(m: number | Media | null | undefined): string {
 
 export const getShopSettings = unstable_cache(
   async (): Promise<ShopSettings> => {
-    const doc = await (await payload()).findGlobal({ slug: "shop-settings", depth: 0 });
+    const doc = await (await payload()).findGlobal({ slug: "shop-settings", depth: 1 });
     return {
       name: doc?.name || "Wireless India",
       tagline: doc?.tagline ?? "",
@@ -30,6 +30,7 @@ export const getShopSettings = unstable_cache(
       mapEmbedUrl: doc?.mapEmbedUrl ?? "",
       marqueeLines: doc?.marqueeLines ?? [],
       heroStats: (doc?.heroStats ?? []).map((s) => ({ value: s.value ?? "", label: s.label ?? "" })),
+      shopfrontPhotoUrl: mediaUrl(doc?.shopfrontPhoto),
     };
   },
   ["payload:shop-settings"],

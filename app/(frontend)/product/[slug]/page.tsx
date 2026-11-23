@@ -8,6 +8,7 @@ import {
   getProduct,
   getRelatedProducts,
   getShopSettings,
+  isSingleCategory,
 } from "@/lib/catalog";
 import type { Product, SpecRow } from "@/lib/types";
 import { discountPct } from "@/lib/price";
@@ -71,6 +72,8 @@ export default async function ProductPage({
   ]);
 
   const categoryName = category?.name ?? "";
+  const single = isSingleCategory(categories);
+  const categoryHref = single ? "/#products" : `/category/${category?.id}`;
   const pct = discountPct(product.price, product.was);
   const highlights = product.highlights ?? product.specs;
   const specTable = buildSpecTable(product, categoryName);
@@ -94,11 +97,15 @@ export default async function ProductPage({
         <div className="crumb">
           <Link href="/">Home</Link>
           <span className="sep">/</span>
-          <Link href="/categories">Categories</Link>
-          <span className="sep">/</span>
+          {!single && (
+            <>
+              <Link href="/categories">Categories</Link>
+              <span className="sep">/</span>
+            </>
+          )}
           {category && (
             <>
-              <Link href={`/category/${category.id}`}>{category.name}</Link>
+              <Link href={categoryHref}>{category.name}</Link>
               <span className="sep">/</span>
             </>
           )}
@@ -121,7 +128,7 @@ export default async function ProductPage({
               <span>{product.brand}</span>
               <span>·</span>
               {category && (
-                <Link href={`/category/${category.id}`}>{category.name}</Link>
+                <Link href={categoryHref}>{category.name}</Link>
               )}
               {product.inStock && <span className={styles.stock}>In stock today</span>}
             </div>

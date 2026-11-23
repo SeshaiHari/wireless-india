@@ -7,7 +7,13 @@ import { FAVOURITES_EVENT, getFavourites } from "@/lib/favourites";
 import { ProductCard } from "@/components/ProductCard";
 import styles from "./favourites.module.css";
 
-export function FavouritesShelf({ allProducts }: { allProducts: Product[] }) {
+export function FavouritesShelf({
+  allProducts,
+  browseHref = "/categories",
+}: {
+  allProducts: Product[];
+  browseHref?: string;
+}) {
   const [ids, setIds] = useState<string[]>([]);
   const [ready, setReady] = useState(false);
 
@@ -29,7 +35,7 @@ export function FavouritesShelf({ allProducts }: { allProducts: Product[] }) {
         <span className={styles.emptyIcon}>♡</span>
         <h2>Your wishlist is empty</h2>
         <p>Tap the heart on any product to save it here.</p>
-        <Link href="/categories" className="btn">
+        <Link href={browseHref} className="btn">
           Browse products
         </Link>
       </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Category, ShopSettings } from "@/lib/types";
+import { browseHref, isSingleCategory } from "@/lib/catalog";
 import { Icon } from "@/components/Icon";
 import { WishlistCount } from "@/components/WishlistCount";
 import { CartCount } from "@/components/CartCount";
@@ -20,6 +21,9 @@ export function SiteHeader({
   variant?: Variant;
   activeCategoryId?: string;
 }) {
+  // With only one visible category, the category menus would hold a single
+  // link, so they are hidden and "Shop now" jumps straight to the products.
+  const single = isSingleCategory(categories);
   const marquee = shop.marqueeLines.length
     ? shop.marqueeLines
     : ["Components, audio, repairs & tools — under one roof"];
@@ -66,7 +70,7 @@ export function SiteHeader({
               <CartCount />
             </Link>
             {variant === "home" ? (
-              <Link href="/categories" className="btn">
+              <Link href={browseHref(categories)} className="btn">
                 Shop now
                 <Icon name="arrowRight" size={14} />
               </Link>
@@ -80,7 +84,7 @@ export function SiteHeader({
       </header>
 
       {/* Nav row */}
-      {variant === "home" ? (
+      {single ? null : variant === "home" ? (
         <div className={styles.navlinks}>
           <div className={`wrap ${styles.navlinksRow}`}>
             <Link href="/categories">

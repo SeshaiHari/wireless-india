@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllProducts, getCategories } from "@/lib/catalog";
+import { getAllProducts, getCategories, isSingleCategory } from "@/lib/catalog";
 import { siteUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -8,12 +8,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getAllProducts(),
   ]);
 
-  const staticRoutes = ["", "/categories", "/contact"].map((path) => ({
+  // In single-category mode the category pages redirect home, so leave them out.
+  const single = isSingleCategory(categories);
+
+  const staticRoutes = (single ? ["", "/contact"] : ["", "/categories", "/contact"]).map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date(),
   }));
 
-  const categoryRoutes = categories.map((c) => ({
+  const categoryRoutes = (single ? [] : categories).map((c) => ({
     url: `${siteUrl}/category/${c.id}`,
     lastModified: new Date(),
   }));

@@ -3,7 +3,9 @@ import {
   getBrands,
   getCategories,
   getFeaturedProducts,
+  getAllProducts,
   getShopSettings,
+  isSingleCategory,
 } from "@/lib/catalog";
 import type { Product } from "@/lib/types";
 import { discountPct } from "@/lib/price";
@@ -15,6 +17,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ProductCard } from "@/components/ProductCard";
 import { CategoryCard } from "@/components/CategoryCard";
+import { SpotlightHero } from "./SpotlightHero";
 import styles from "./page.module.css";
 
 // Small-tile badge: show discount for deals, otherwise the tag text.
@@ -29,12 +32,21 @@ function smallBadge(p: Product) {
 }
 
 export default async function HomePage() {
-  const [shop, categories, featured, brands] = await Promise.all([
+  const [shop, categories, featured, brands, allProducts] = await Promise.all([
     getShopSettings(),
     getCategories(),
     getFeaturedProducts(),
     getBrands(),
+    getAllProducts(),
   ]);
+
+  // Fewer than two visible categories: skip the category step and show the
+  // products right on the home page (see isSingleCategory in lib/catalog).
+  const single = isSingleCategory(categories);
+  const onlyCategory = single ? (categories[0] ?? null) : null;
+  const spotlight = single
+    ? (featured[0] ?? allProducts.find((p) => p.inStock) ?? allProducts[0] ?? null)
+    : null;
 
   const pick = (id: string) => featured.find((p) => p.id === id);
   const feature = pick("zeb-juke-bar-9750-pro") ?? featured[0];
@@ -60,6 +72,15 @@ export default async function HomePage() {
       <SiteHeader categories={categories} shop={shop} variant="home" />
 
       <main id="main">
+      {single ? (
+        <SpotlightHero
+          category={onlyCategory}
+          product={spotlight}
+          productCount={allProducts.length}
+          shop={shop}
+        />
+      ) : (
+      <>
       {/* ===== Hero bento ===== */}
       <section className={styles.hero}>
         <div className="wrap">
@@ -207,6 +228,36 @@ export default async function HomePage() {
         </div>
       </div>
 
+      </>
+      )}
+
+      {single ? (
+        /* ===== All products (single-category mode) ===== */
+        <section id="products" className={styles.section}>
+          <div className="wrap">
+            <div className={styles.sHead}>
+              <div>
+                <h2>{onlyCategory ? `${onlyCategory.name}.` : "Our products."}</h2>
+                <p className={styles.sSub}>
+                  {allProducts.length > 0
+                    ? `${allProducts.length} ${allProducts.length === 1 ? "product" : "products"} in stock. Add to cart and send the whole order on WhatsApp, or ask us anything.`
+                    : "New stock is on its way. Message us on WhatsApp for availability."}
+                </p>
+              </div>
+            </div>
+            {allProducts.length > 0 ? (
+              <div className={styles.gridSpot}>
+                {allProducts.map((p) => (
+                  <ProductCard key={p.id} product={p} variant="withSpecs" />
+                ))}
+              </div>
+            ) : (
+              <p className={styles.emptyNote}>Nothing listed right now.</p>
+            )}
+          </div>
+        </section>
+      ) : (
+      <>
       {/* ===== Featured ===== */}
       <section className={styles.section}>
         <div className="wrap">
@@ -257,6 +308,9 @@ export default async function HomePage() {
         </div>
       </section>
 
+      </>
+      )}
+
       {/* ===== Promo ===== */}
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className="wrap">
@@ -293,6 +347,7 @@ export default async function HomePage() {
       </section>
 
       {/* ===== New arrivals ===== */}
+      {!single && (
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className={styles.arrivals}>
@@ -329,6 +384,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      )}
 
       {/* ===== Trust ===== */}
       <section className={styles.section} style={{ padding: "36px 0" }}>

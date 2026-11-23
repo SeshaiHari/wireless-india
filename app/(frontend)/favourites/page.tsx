@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllProducts, getCategories, getShopSettings } from "@/lib/catalog";
+import { browseHref, getAllProducts, getCategories, getShopSettings } from "@/lib/catalog";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FavouritesShelf } from "./FavouritesShelf";
@@ -30,7 +30,7 @@ export default async function FavouritesPage() {
         <div className={styles.head}>
           <h1>Your wishlist.</h1>
         </div>
-        <FavouritesShelf allProducts={allProducts} />
+        <FavouritesShelf allProducts={allProducts} browseHref={browseHref(categories)} />
       </main>
 
       <SiteFooter categories={categories} shop={shop} />

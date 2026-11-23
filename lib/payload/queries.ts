@@ -43,6 +43,8 @@ export const getCategories = unstable_cache(
       sort: "order",
       limit: 0,
       depth: 1,
+      // Hidden categories (and, below, their products) never reach the site.
+      where: { visible: { not_equals: false } },
     });
     return docs.map((c, i) => ({
       id: c.slug,
@@ -79,7 +81,9 @@ export const getAllProducts = unstable_cache(
       depth: 1,
       sort: "createdAt",
     });
-    return docs.map((p) => ({
+    const isShown = (p: (typeof docs)[number]) =>
+      typeof p.category === "object" && p.category !== null && p.category.visible !== false;
+    return docs.filter(isShown).map((p) => ({
       id: p.slug,
       name: p.name,
       brand: typeof p.brand === "object" && p.brand ? p.brand.name : "Generic",

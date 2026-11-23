@@ -1,6 +1,6 @@
 /**
- * Shared upsert helpers for loading catalog content into Payload. Used by both
- * the Sanity migration and the local seed. Every write is keyed on a stable
+ * Shared upsert helpers for loading catalog content into Payload, used by
+ * the local seed (npm run seed). Every write is keyed on a stable
  * field (slug, brand name, media filename) so re-running updates in place
  * instead of creating duplicates.
  */

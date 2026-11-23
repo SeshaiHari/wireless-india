@@ -4,7 +4,7 @@ import config from "@payload-config";
 import type { Brand, Category, Product, ProductTag, ShopSettings } from "@/lib/types";
 import type { Media } from "@/payload-types";
 
-// Cached reads with the same policy the Sanity version had: 60s time-based
+// Cached reads: 60s time-based
 // revalidation plus the shared "catalog" tag, which Payload's afterChange hooks
 // purge on every edit (see payload/hooks.ts).
 const cacheOpts = { revalidate: 60, tags: ["catalog"] };

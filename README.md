@@ -54,7 +54,8 @@ npm run lint                 # eslint
 1. Vercel → Storage → create **Neon Postgres** and **Blob**, connect both to the
    project (adds `DATABASE_URL` and `BLOB_READ_WRITE_TOKEN`).
 2. Add `PAYLOAD_SECRET` (long random string).
-3. Deploy. The `vercel-build` script runs `payload migrate` before `next build`.
+3. Deploy. The `vercel-build` script runs `payload migrate` before `next build`
+   (skipped when `DATABASE_URL` is missing, so the site builds on the seed catalog).
 4. Open `/admin` and create the first admin user.
 
 ## Changing the content model

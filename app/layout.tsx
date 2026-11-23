@@ -1,39 +1,40 @@
 import type { Metadata } from "next";
-import {
-  Inter_Tight,
-  Instrument_Serif,
-  Fraunces,
-  JetBrains_Mono,
-} from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const interTight = Inter_Tight({
+// Fonts are self-hosted from app/fonts (OFL-licensed files from Fontsource)
+// instead of next/font/google, so production builds never depend on
+// downloading from Google Fonts at build time.
+
+const interTight = localFont({
   variable: "--font-inter-tight",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  src: "./fonts/inter-tight-latin-wght-normal.woff2",
+  weight: "100 900",
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
+const instrumentSerif = localFont({
   variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+  src: [
+    { path: "./fonts/instrument-serif-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/instrument-serif-latin-400-italic.woff2", weight: "400", style: "italic" },
+  ],
   display: "swap",
 });
 
-const fraunces = Fraunces({
+const fraunces = localFont({
   variable: "--font-fraunces",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
+  src: [
+    { path: "./fonts/fraunces-latin-wght-normal.woff2", weight: "100 900", style: "normal" },
+    { path: "./fonts/fraunces-latin-wght-italic.woff2", weight: "100 900", style: "italic" },
+  ],
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const jetbrainsMono = localFont({
   variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  src: "./fonts/jetbrains-mono-latin-wght-normal.woff2",
+  weight: "100 800",
   display: "swap",
 });
 

@@ -9,8 +9,8 @@ import type {
 // Canonical local catalog for Wireless India.
 //
 // Ported & expanded from design/project/assets/data.js. This is the single
-// source of truth used (a) to seed Sanity and (b) as the fallback the site
-// renders from when Sanity env vars aren't configured yet. Image paths point
+// source of truth used (a) to seed Payload (npm run seed) and (b) as the fallback the site
+// renders from when DATABASE_URL isn't configured. Image paths point
 // at /public/products/** so they resolve locally without a CMS.
 // ---------------------------------------------------------------------------
 

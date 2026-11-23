@@ -11,7 +11,7 @@ import path from "node:path";
 import { getPayload } from "payload";
 import config from "../payload.config";
 import { shopSettings, categories, brands, products } from "../lib/data/seed";
-import { makeImporter, type ImageSource } from "../lib/migration/importer";
+import { makeImporter, type ImageSource } from "./importer";
 
 const MIME: Record<string, string> = { ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".svg": "image/svg+xml" };
 

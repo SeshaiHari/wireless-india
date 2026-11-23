@@ -71,16 +71,6 @@ npm run generate:importmap      # only if admin components changed
 
 Commit the migration; it runs on the next deploy.
 
-## Moving content from Sanity (one-off)
-
-On Vercel: log in at `/admin`, then open `/api/migrate-sanity` and press the
-button. Locally: `npm run migrate:sanity`. Either way it copies every published Sanity document — shop settings,
-brands, categories, products and all their images (crop applied, hotspot kept as
-focal point) — into Payload. Set `SANITY_PROJECT_ID`, `SANITY_DATASET`
-(and `SANITY_READ_TOKEN` for a private dataset) plus the Payload env vars. It's
-safe to re-run, and it fails loudly if Sanity holds a content type it doesn't
-know about.
-
 ## Project map
 
 ```
@@ -105,7 +95,6 @@ payload.config.ts          Payload config (Postgres, Vercel Blob)
 payload/                   collections, globals, hooks, migrations
 payload-types.ts           Generated types (npm run generate:types)
 scripts/seed.ts            Load seed → Payload
-scripts/migrate-from-sanity.ts  One-off: copy Sanity → Payload
 design/                    Original Claude Design handoff (reference only)
 ```
 

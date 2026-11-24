@@ -1,6 +1,6 @@
 import type {
   Brand,
-  Category,
+  CategoryBase,
   Product,
   ShopSettings,
 } from "@/lib/types";
@@ -37,17 +37,17 @@ export const shopSettings: ShopSettings = {
   ],
 };
 
-export const categories: Category[] = [
-  { id: "sound-bars", name: "Sound Bars", claimedCount: 24, blurb: "2.1, 5.1 & Dolby Atmos systems", hero: "/products/sound-bars/zeb-juke-bar-9750-pro.webp", order: 1 },
-  { id: "bluetooth-speakers", name: "Bluetooth Speakers", claimedCount: 62, blurb: "Portable, party, outdoor, RGB", hero: "/products/bluetooth-speakers/stone-spinx-pro.webp", order: 2 },
-  { id: "keyboards-mice", name: "Keyboards & Mice", claimedCount: 84, blurb: "Wired, wireless & combo sets", hero: "/products/keyboards-mice/logitech-mk200.jpg", order: 3 },
-  { id: "multimeters", name: "Multimeters", claimedCount: 32, blurb: "Digital, analog, clamp & lab grade", hero: "/products/multimeters/astroai-am33d.jpg", order: 4 },
-  { id: "ics-fets", name: "ICs & FETs", claimedCount: 1380, blurb: "Op-amps, logic, MOSFETs, regulators", hero: "/products/ics-fets/ic-dip-pair.jpg", order: 5 },
-  { id: "cables", name: "Cables & Wires", claimedCount: 410, blurb: "HDMI, USB, audio, jumper, ethernet", hero: "/products/cables/hdmi-cable.jpg", order: 6 },
-  { id: "pendrives", name: "Pendrives & Memory", claimedCount: 96, blurb: "USB drives, SD cards, OTG", hero: "/products/pendrives/sandisk-ultra-dual.jpg", order: 7 },
-  { id: "powerstrips", name: "Power Strips", claimedCount: 44, blurb: "USB-C, surge protected, extension", hero: "/products/powerstrips/usb-c-strip.webp", order: 8 },
-  { id: "screwdrivers", name: "Screwdrivers & Tools", claimedCount: 140, blurb: "Precision, magnetic, repair kits", hero: "/products/screwdrivers/stanley-flathead.webp", order: 9 },
-  { id: "cctv-psu", name: "CCTV Power Supplies", claimedCount: 28, blurb: "SMPS, adaptors, surveillance gear", hero: "/products/cctv-psu/cctv-smps.webp", order: 10 },
+export const categories: CategoryBase[] = [
+  { id: "sound-bars", name: "Sound Bars", blurb: "2.1, 5.1 & Dolby Atmos systems", hero: "/products/sound-bars/zeb-juke-bar-9750-pro.webp", order: 1 },
+  { id: "bluetooth-speakers", name: "Bluetooth Speakers", blurb: "Portable, party, outdoor, RGB", hero: "/products/bluetooth-speakers/stone-spinx-pro.webp", order: 2 },
+  { id: "keyboards-mice", name: "Keyboards & Mice", blurb: "Wired, wireless & combo sets", hero: "/products/keyboards-mice/logitech-mk200.jpg", order: 3 },
+  { id: "multimeters", name: "Multimeters", blurb: "Digital, analog, clamp & lab grade", hero: "/products/multimeters/astroai-am33d.jpg", order: 4 },
+  { id: "ics-fets", name: "ICs & FETs", blurb: "Op-amps, logic, MOSFETs, regulators", hero: "/products/ics-fets/ic-dip-pair.jpg", order: 5 },
+  { id: "cables", name: "Cables & Wires", blurb: "HDMI, USB, audio, jumper, ethernet", hero: "/products/cables/hdmi-cable.jpg", order: 6 },
+  { id: "pendrives", name: "Pendrives & Memory", blurb: "USB drives, SD cards, OTG", hero: "/products/pendrives/sandisk-ultra-dual.jpg", order: 7 },
+  { id: "powerstrips", name: "Power Strips", blurb: "USB-C, surge protected, extension", hero: "/products/powerstrips/usb-c-strip.webp", order: 8 },
+  { id: "screwdrivers", name: "Screwdrivers & Tools", blurb: "Precision, magnetic, repair kits", hero: "/products/screwdrivers/stanley-flathead.webp", order: 9 },
+  { id: "cctv-psu", name: "CCTV Power Supplies", blurb: "SMPS, adaptors, surveillance gear", hero: "/products/cctv-psu/cctv-smps.webp", order: 10 },
 ];
 
 export const brands: Brand[] = [

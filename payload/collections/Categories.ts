@@ -26,7 +26,9 @@ export const Categories: CollectionConfig = {
       name: "claimedCount",
       label: "Claimed item count",
       type: "number",
-      admin: { description: "Marketing count shown on cards — not computed from real SKUs." },
+      // No longer shown on the site: cards now count the real products in the
+      // category. Kept (hidden) so the database column needs no migration.
+      admin: { hidden: true },
     },
     { name: "heroImage", label: "Hero image", type: "upload", relationTo: "media" },
     { name: "order", label: "Sort order", type: "number" },

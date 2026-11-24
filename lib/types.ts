@@ -30,16 +30,20 @@ export interface ShopSettings {
   shopfrontPhotoUrl?: string;
 }
 
-export interface Category {
+/** A category as stored in the CMS / seed, before product counts are added. */
+export interface CategoryBase {
   /** slug, also matches the image folder name */
   id: string;
   name: string;
   blurb: string;
-  /** Aspirational marketing count shown on cards (NOT computed from real SKUs) */
-  claimedCount: number;
   /** Hero/thumbnail image URL */
   hero: string;
   order: number;
+}
+
+export interface Category extends CategoryBase {
+  /** Number of products in this category that are shown on the site. */
+  productCount: number;
 }
 
 export interface Brand {

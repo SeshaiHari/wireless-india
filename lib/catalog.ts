@@ -26,9 +26,20 @@ export async function getShopSettings(): Promise<ShopSettings> {
   return seed.shopSettings;
 }
 
+/** Visible categories, each with the real number of products shown on the
+ *  site. Products in hidden categories are already left out upstream. */
 export async function getCategories(): Promise<Category[]> {
-  if (payloadConfigured) return (await cms()).getCategories();
-  return [...seed.categories].sort(byOrder);
+  const [base, products] = await Promise.all([
+    payloadConfigured
+      ? (await cms()).getCategories()
+      : Promise.resolve([...seed.categories].sort(byOrder)),
+    getAllProducts(),
+  ]);
+  const counts = new Map<string, number>();
+  for (const p of products) {
+    counts.set(p.categoryId, (counts.get(p.categoryId) ?? 0) + 1);
+  }
+  return base.map((c) => ({ ...c, productCount: counts.get(c.id) ?? 0 }));
 }
 
 export async function getCategory(slug: string): Promise<Category | null> {

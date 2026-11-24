@@ -247,6 +247,40 @@ export const products: Product[] = [
       "A rugged 10W speaker with IPX7 water resistance and RGB lights — built to follow you to the pool or the campsite.",
   },
   {
+    id: "zebronics-rgb-strap-blue",
+    name: "Zebronics Portable RGB Bluetooth Speaker (Blue)",
+    brand: "Zebronics",
+    categoryId: "bluetooth-speakers",
+    price: "₹999", // placeholder — confirm
+    was: null,
+    tag: "New",
+    images: ["/products/bluetooth-speakers/zebronics-rgb-strap-blue.webp"],
+    specs: ["RGB lights", "Carry strap", "Bluetooth"],
+    sku: "WI-BT-ZEBRGB",
+    inStock: true,
+    featured: false,
+    description:
+      "A compact Bluetooth speaker with a colourful RGB light bar, a metal-mesh grille and a leatherette carry strap — easy to clip to a bag or hang at home.",
+    highlights: ["RGB light bar", "Carry strap", "Compact"],
+  },
+  {
+    id: "zebronics-party-handle",
+    name: "Zebronics Portable Party Bluetooth Speaker with Handle",
+    brand: "Zebronics",
+    categoryId: "bluetooth-speakers",
+    price: "₹2,999", // placeholder — confirm
+    was: null,
+    tag: "New",
+    images: ["/products/bluetooth-speakers/zebronics-party-handle.webp"],
+    specs: ["Carry handle", "RGB light strip", "Bluetooth"],
+    sku: "WI-BT-ZEBPARTY",
+    inStock: true,
+    featured: false,
+    description:
+      "A rugged party-style Bluetooth speaker with a sturdy top handle, a full-width front grille and an RGB light strip along the base.",
+    highlights: ["Carry handle", "RGB light strip", "Party-ready"],
+  },
+  {
     id: "stanley-flathead",
     name: "Stanley Cushion-Grip Flathead Screwdriver",
     brand: "Stanley",

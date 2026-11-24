@@ -59,6 +59,13 @@ npm run lint                 # eslint
    (skipped when `DATABASE_URL` is missing, so the site builds on the seed catalog).
 4. Open `/admin` and create the first admin user.
 
+**Keep functions next to the database.** `vercel.json` pins Vercel Functions to
+`sin1` (Singapore) because the Neon database is in `ap-southeast-1` (Singapore).
+Each admin page makes many database queries, so a function in another region
+(Vercel's default is Washington, `iad1`) pays a ~200 ms round trip on every one.
+If the database ever moves, change `regions` to match. The build log prints the
+database region (`[wireless-india] database region: ...`) to make a mismatch easy to spot.
+
 ## Analytics (Umami)
 
 Visitor analytics uses [Umami](https://umami.is): open source, no cookies, no

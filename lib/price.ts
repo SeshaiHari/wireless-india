@@ -15,7 +15,15 @@ export function discountPct(
   return Math.round((1 - now / before) * 100);
 }
 
-/** Format a rupee amount for display, e.g. 12998 → "₹12,998". */
+/** Format a rupee amount for display, e.g. 12998 → "₹12,998", 149999 → "₹1,49,999". */
 export function formatINR(amount: number): string {
-  return `₹${Math.round(amount).toLocaleString("en-IN")}`;
+  return `₹${amount.toLocaleString("en-IN", { maximumFractionDigits: 2 })}`;
+}
+
+/** Shown when a product has no usable price (0 or blank) in the admin. */
+export const PRICE_ON_REQUEST = "Price on request";
+
+/** Display string for a numeric admin price: "₹1,499", or PRICE_ON_REQUEST when unset. */
+export function displayPrice(amount: number | null | undefined): string {
+  return amount && amount > 0 ? formatINR(amount) : PRICE_ON_REQUEST;
 }

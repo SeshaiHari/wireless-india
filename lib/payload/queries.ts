@@ -3,6 +3,7 @@ import { getPayload } from "payload";
 import config from "@payload-config";
 import type { Brand, CategoryBase, Product, ProductTag, ShopSettings } from "@/lib/types";
 import type { Media } from "@/payload-types";
+import { displayPrice, formatINR } from "@/lib/price";
 
 // Cached reads: 60s time-based
 // revalidation plus the shared "catalog" tag, which Payload's afterChange hooks
@@ -88,8 +89,8 @@ export const getAllProducts = unstable_cache(
       name: p.name,
       brand: typeof p.brand === "object" && p.brand ? p.brand.name : "Generic",
       categoryId: typeof p.category === "object" && p.category ? p.category.slug : "",
-      price: p.price,
-      was: p.wasPrice || null,
+      price: displayPrice(p.price),
+      was: p.wasPrice ? formatINR(p.wasPrice) : null,
       tag: (p.tag as ProductTag) ?? null,
       images: (p.images ?? []).map(mediaUrl).filter(Boolean),
       specs: p.specs ?? [],

@@ -141,10 +141,13 @@ export interface Product {
   brand?: (number | null) | Brand;
   category: number | Category;
   /**
-   * e.g. "₹1,499"
+   * Numbers only, e.g. 1499. The site adds ₹ and commas.
    */
-  price: string;
-  wasPrice?: string | null;
+  price: number;
+  /**
+   * Optional. Numbers only, e.g. 1999.
+   */
+  wasPrice?: number | null;
   tag?: ('New' | 'Hot deal' | 'Best deal' | 'Bestseller' | 'Combo' | 'Office pick') | null;
   images: (number | Media)[];
   /**
@@ -229,9 +232,6 @@ export interface Category {
    */
   slug: string;
   blurb?: string | null;
-  /**
-   * Marketing count shown on cards — not computed from real SKUs.
-   */
   claimedCount?: number | null;
   heroImage?: (number | null) | Media;
   order?: number | null;

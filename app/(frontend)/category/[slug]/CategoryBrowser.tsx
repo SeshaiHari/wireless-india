@@ -24,7 +24,7 @@ export function CategoryBrowser({
   }, [products]);
 
   const priceBounds = useMemo(() => {
-    const nums = products.map((p) => parsePrice(p.price)).filter((n) => !isNaN(n));
+    const nums = products.map((p) => parsePrice(p.price)).filter((n) => n > 0);
     return { min: Math.min(...nums, 0), max: Math.max(...nums, 0) };
   }, [products]);
 

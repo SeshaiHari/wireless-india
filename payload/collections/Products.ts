@@ -27,8 +27,21 @@ export const Products: CollectionConfig = {
     {
       type: "row",
       fields: [
-        { name: "price", type: "text", required: true, admin: { description: 'e.g. "₹1,499"' } },
-        { name: "wasPrice", label: "Was price (strikethrough)", type: "text" },
+        {
+          name: "price",
+          label: "Price (₹)",
+          type: "number",
+          required: true,
+          min: 0,
+          admin: { description: "Numbers only, e.g. 1499. The site adds ₹ and commas." },
+        },
+        {
+          name: "wasPrice",
+          label: "Was price (₹, strikethrough)",
+          type: "number",
+          min: 0,
+          admin: { description: "Optional. Numbers only, e.g. 1999." },
+        },
         {
           name: "tag",
           label: "Badge",

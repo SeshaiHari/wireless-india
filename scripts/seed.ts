@@ -12,6 +12,7 @@ import { getPayload } from "payload";
 import config from "../payload.config";
 import { shopSettings, categories, brands, products } from "../lib/data/seed";
 import { makeImporter, type ImageSource } from "./importer";
+import { parsePrice } from "../lib/price";
 
 const MIME: Record<string, string> = { ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".svg": "image/svg+xml" };
 
@@ -60,8 +61,8 @@ for (const p of products) {
     slug: p.id,
     brand: brandIds.get(p.brand) ?? null,
     category: categoryIds.get(p.categoryId),
-    price: p.price,
-    wasPrice: p.was,
+    price: parsePrice(p.price) || 0,
+    wasPrice: parsePrice(p.was) || null,
     tag: p.tag,
     images,
     specs: p.specs,

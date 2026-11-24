@@ -17,6 +17,19 @@ console.log(
     vars.map((v) => `${v}=${process.env[v] ? "set" : "missing"}`).join(", "),
 );
 
+// Where the database lives (region only, no credentials). Vercel functions must
+// run in the same region, or every admin page pays the round trip many times over.
+if (process.env.DATABASE_URL) {
+  try {
+    const host = new URL(process.env.DATABASE_URL).hostname;
+    const labels = host.split(".");
+    const region = labels.find((l) => /^[a-z]+-[a-z]+-\d+$/.test(l)) ?? labels.slice(1, -2).join(".");
+    console.log(
+      `[wireless-india] database region: ${region || "unknown"}, pooled connection: ${host.includes("-pooler") ? "yes" : "no"}`,
+    );
+  } catch {}
+}
+
 if (process.env.DATABASE_URL) {
   if (!process.env.PAYLOAD_SECRET) {
     console.error(

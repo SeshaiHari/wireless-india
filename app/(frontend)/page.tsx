@@ -241,7 +241,7 @@ export default async function HomePage() {
                 <h2>{onlyCategory ? `${onlyCategory.name}.` : "Our products."}</h2>
                 <p className={styles.sSub}>
                   {allProducts.length > 0
-                    ? `${allProducts.length} ${allProducts.length === 1 ? "product" : "products"} in stock. Add to cart and send the whole order on WhatsApp, or ask us anything.`
+                    ? `${allProducts.length} ${allProducts.length === 1 ? "product" : "products"} on the shelf. Add to cart and send the whole order on WhatsApp, or ask us anything.`
                     : "New stock is on its way. Message us on WhatsApp for availability."}
                 </p>
               </div>

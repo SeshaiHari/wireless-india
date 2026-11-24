@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import {
-  getAllProducts,
   getCategories,
   getCategory,
   getProductsByCategory,
@@ -40,12 +39,11 @@ export default async function CategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [category, categories, products, shop, allProducts] = await Promise.all([
+  const [category, categories, products, shop] = await Promise.all([
     getCategory(slug),
     getCategories(),
     getProductsByCategory(slug),
     getShopSettings(),
-    getAllProducts(),
   ]);
 
   if (!category) notFound();
@@ -53,13 +51,6 @@ export default async function CategoryPage({
   // and category sidebar that look empty with a single shelf.
   if (isSingleCategory(categories)) redirect("/");
 
-  const countsByCategory = allProducts.reduce<Record<string, number>>(
-    (acc, p) => {
-      acc[p.categoryId] = (acc[p.categoryId] ?? 0) + 1;
-      return acc;
-    },
-    {},
-  );
   const brandCount = new Set(products.map((p) => p.brand)).size;
 
   return (
@@ -104,7 +95,6 @@ export default async function CategoryPage({
           category={category}
           products={products}
           allCategories={categories}
-          countsByCategory={countsByCategory}
         />
       </main>
 

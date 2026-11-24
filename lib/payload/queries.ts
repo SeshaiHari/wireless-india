@@ -1,7 +1,7 @@
 import { unstable_cache } from "next/cache";
 import { getPayload } from "payload";
 import config from "@payload-config";
-import type { Brand, Category, Product, ProductTag, ShopSettings } from "@/lib/types";
+import type { Brand, CategoryBase, Product, ProductTag, ShopSettings } from "@/lib/types";
 import type { Media } from "@/payload-types";
 
 // Cached reads: 60s time-based
@@ -38,7 +38,7 @@ export const getShopSettings = unstable_cache(
 );
 
 export const getCategories = unstable_cache(
-  async (): Promise<Category[]> => {
+  async (): Promise<CategoryBase[]> => {
     const { docs } = await (await payload()).find({
       collection: "categories",
       sort: "order",
@@ -51,7 +51,6 @@ export const getCategories = unstable_cache(
       id: c.slug,
       name: c.name,
       blurb: c.blurb ?? "",
-      claimedCount: c.claimedCount ?? 0,
       hero: mediaUrl(c.heroImage),
       order: c.order ?? i + 1,
     }));

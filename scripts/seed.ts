@@ -45,7 +45,6 @@ for (const c of categories) {
       name: c.name,
       slug: c.id,
       blurb: c.blurb,
-      claimedCount: c.claimedCount,
       order: c.order,
       heroImage: c.hero ? await media(local(c.hero, c.name)) : null,
     }),

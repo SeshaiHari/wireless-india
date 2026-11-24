@@ -11,12 +11,10 @@ export function CategoryBrowser({
   category,
   products,
   allCategories,
-  countsByCategory,
 }: {
   category: Category;
   products: Product[];
   allCategories: Category[];
-  countsByCategory: Record<string, number>;
 }) {
   // Brand facets derived from the actual products in this category.
   const brandCounts = useMemo(() => {
@@ -89,7 +87,7 @@ export function CategoryBrowser({
                 href={`/category/${c.id}`}
                 className={c.id === category.id ? styles.on : undefined}
               >
-                {c.name} <span className={styles.c}>{countsByCategory[c.id] ?? 0}</span>
+                {c.name} <span className={styles.c}>{c.productCount}</span>
               </Link>
             ))}
           </div>

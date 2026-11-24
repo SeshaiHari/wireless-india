@@ -59,6 +59,48 @@ npm run lint                 # eslint
    (skipped when `DATABASE_URL` is missing, so the site builds on the seed catalog).
 4. Open `/admin` and create the first admin user.
 
+## Analytics (Umami)
+
+Visitor analytics uses [Umami](https://umami.is): open source, no cookies, no
+personal data, so no consent banner. It is off until a website ID is set.
+
+**Self-hosted (free, on Vercel + Neon):**
+
+1. Neon (or Vercel → Storage → Neon): create a **new, empty database** for Umami.
+   Don't reuse the Payload database. Copy its connection string.
+2. GitHub: fork `umami-software/umami`.
+3. Vercel → Add New → Project → import the fork. Add env vars
+   `DATABASE_URL` (the Umami connection string) and, optionally,
+   `TRACKER_SCRIPT_NAME=stats` (serves the script as `/stats.js`, which fewer
+   ad blockers block). Deploy. The first build creates Umami's tables.
+4. Open the Umami site, log in as `admin` / `umami`, and **change the password
+   right away** (Settings → Profile).
+5. Settings → Websites → Add website (your shop domain) → copy the **Website ID**.
+6. In the shop's Vercel project (Production env), set:
+   - `NEXT_PUBLIC_UMAMI_WEBSITE_ID` = the Website ID
+   - `NEXT_PUBLIC_UMAMI_SCRIPT_URL` = `https://<your-umami>.vercel.app/stats.js`
+     (or `/script.js` if you skipped `TRACKER_SCRIPT_NAME`)
+   - `NEXT_PUBLIC_UMAMI_DOMAINS` = your shop domain, e.g. `wirelessindia.in`
+
+   Then redeploy the shop.
+
+**Umami Cloud instead:** sign up at cloud.umami.is (free tier), add the website,
+and set only `NEXT_PUBLIC_UMAMI_WEBSITE_ID` and `NEXT_PUBLIC_UMAMI_DOMAINS`.
+
+Page views are automatic. Custom events (`lib/analytics.ts`):
+
+| Event | When | Data |
+| --- | --- | --- |
+| `category_view` | Category page opens | category, products |
+| `product_view` | Product page opens | product, sku, brand, category, price |
+| `add_to_cart` | Add / Add to cart button | product, qty, value, source, page |
+| `whatsapp_click` | Any WhatsApp link or the contact form | kind (`order` / `chat` / `contact_form`), placement, page; orders add product, items, units, value |
+| `call_click` | Any phone link | placement, page |
+
+WhatsApp and phone links are caught site-wide by `components/Analytics.tsx`.
+To label a new link, add `data-track="where-it-is"` (and `data-track-kind="order"`
+plus `data-track-value` etc. if it carries an order).
+
 ## Changing the content model
 
 Edit a file in `payload/collections` or `payload/globals`, then:

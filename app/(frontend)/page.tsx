@@ -112,6 +112,7 @@ export default async function HomePage() {
                   <a
                     className="btn ghost on-dark"
                     href={waLink(shop.whatsapp)}
+                    data-track="home_hero"
                     target="_blank"
                     rel="noopener"
                   >
@@ -332,6 +333,7 @@ export default async function HomePage() {
               <a
                 className={styles.waCta}
                 href={waLink(shop.whatsapp)}
+                data-track="home_whatsapp_section"
                 target="_blank"
                 rel="noopener"
               >

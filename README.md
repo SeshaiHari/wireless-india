@@ -59,6 +59,30 @@ npm run lint                 # eslint
    (skipped when `DATABASE_URL` is missing, so the site builds on the seed catalog).
 4. Open `/admin` and create the first admin user.
 
+## Analytics (Umami)
+
+Visitor analytics uses [Umami](https://umami.is): open source, no cookies, no
+personal data, so no consent banner. It is off until a website ID is set.
+
+1. Sign up at cloud.umami.is (free tier), add the website, copy its **Website ID**.
+2. In Vercel → Settings → Environment Variables (Production), add
+   `NEXT_PUBLIC_UMAMI_WEBSITE_ID` and `NEXT_PUBLIC_UMAMI_DOMAINS` (your domain),
+   then redeploy. Self-hosting later? Also set `NEXT_PUBLIC_UMAMI_SCRIPT_URL`.
+
+Page views are automatic. Custom events (`lib/analytics.ts`):
+
+| Event | When | Data |
+| --- | --- | --- |
+| `category_view` | Category page opens | category, products |
+| `product_view` | Product page opens | product, sku, brand, category, price |
+| `add_to_cart` | Add / Add to cart button | product, qty, value, source, page |
+| `whatsapp_click` | Any WhatsApp link or the contact form | kind (`order` / `chat` / `contact_form`), placement, page; orders add product, items, units, value |
+| `call_click` | Any phone link | placement, page |
+
+WhatsApp and phone links are caught site-wide by `components/Analytics.tsx`.
+To label a new link, add `data-track="where-it-is"` (and `data-track-kind="order"`
+plus `data-track-value` etc. if it carries an order).
+
 ## Changing the content model
 
 Edit a file in `payload/collections` or `payload/globals`, then:

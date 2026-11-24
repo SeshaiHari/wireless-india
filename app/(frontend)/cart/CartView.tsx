@@ -131,6 +131,11 @@ export function CartView({
         <a
           className={`btn wa ${styles.send}`}
           href={orderLink(whatsapp, lines, customer)}
+          data-track="cart"
+          data-track-kind="order"
+          data-track-items={lines.length}
+          data-track-units={lines.reduce((n, l) => n + l.qty, 0)}
+          data-track-value={allPriced ? total : undefined}
           target="_blank"
           rel="noopener"
         >

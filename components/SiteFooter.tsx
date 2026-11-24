@@ -64,7 +64,7 @@ export function SiteFooter({
             <li>Repairs &amp; service</li>
             <li>Warranty claim</li>
             <li>
-              <a href={waLink(shop.whatsapp)} target="_blank" rel="noopener">
+              <a href={waLink(shop.whatsapp)} target="_blank" rel="noopener" data-track="footer">
                 WhatsApp enquiry
               </a>
             </li>
@@ -75,7 +75,7 @@ export function SiteFooter({
           <h2>Contact</h2>
           <ul>
             <li>
-              <a href={telHref(shop.phone)}>{shop.phone}</a>
+              <a href={telHref(shop.phone)} data-track="footer">{shop.phone}</a>
             </li>
             <li>{shop.hours}</li>
             <li>{shop.address}</li>

@@ -86,7 +86,7 @@ export default async function ContactPage() {
           </p>
 
           <div className={styles.quick}>
-            <a className={styles.qcard} href={telHref(shop.phone)}>
+            <a className={styles.qcard} href={telHref(shop.phone)} data-track="contact_card">
               <div className={styles.ico}>
                 <Icon name="phone" size={22} />
               </div>
@@ -99,6 +99,7 @@ export default async function ContactPage() {
             <a
               className={`${styles.qcard} ${styles.wa}`}
               href={waLink(shop.whatsapp)}
+              data-track="contact_card"
               target="_blank"
               rel="noopener"
             >
@@ -166,6 +167,7 @@ export default async function ContactPage() {
                 <a
                   className="btn wa"
                   href={waLink(shop.whatsapp)}
+                  data-track="contact_visit"
                   target="_blank"
                   rel="noopener"
                 >

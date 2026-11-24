@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Icon } from "@/components/Icon";
 import { waLink } from "@/lib/wa";
+import { track } from "@/lib/analytics";
 import styles from "./contact.module.css";
 
 const BUYER_TYPES = [
@@ -46,6 +47,13 @@ export function ContactForm({ whatsapp }: { whatsapp: string }) {
       `Looking for: ${form.interest}`,
       form.message && `Details: ${form.message}`,
     ].filter(Boolean);
+    track("whatsapp_click", {
+      kind: "contact_form",
+      placement: "contact_form",
+      page: window.location.pathname,
+      interest: form.interest,
+      buyer: form.buyer,
+    });
     window.open(waLink(whatsapp, lines.join("\n")), "_blank", "noopener");
   };
 

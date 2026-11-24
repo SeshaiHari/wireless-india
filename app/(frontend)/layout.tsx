@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Analytics } from "@/components/Analytics";
 
 // Fonts are self-hosted from app/fonts (OFL-licensed files from Fontsource)
 // instead of next/font/google, so production builds never depend on
@@ -68,6 +69,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <Analytics />
       </body>
     </html>
   );

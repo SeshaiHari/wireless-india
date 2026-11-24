@@ -11,8 +11,9 @@ import {
   isSingleCategory,
 } from "@/lib/catalog";
 import type { Product, SpecRow } from "@/lib/types";
-import { discountPct } from "@/lib/price";
+import { discountPct, parsePrice } from "@/lib/price";
 import { waLink } from "@/lib/wa";
+import { TrackView } from "@/components/TrackView";
 import { productJsonLd } from "@/lib/jsonld";
 import { Icon } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
@@ -85,6 +86,16 @@ export default async function ProductPage({
   return (
     <>
       <JsonLd data={productJsonLd(product, shop, categoryName)} />
+      <TrackView
+        event="product_view"
+        data={{
+          product: product.name,
+          sku: product.sku,
+          brand: product.brand,
+          category: categoryName,
+          price: parsePrice(product.price) || undefined,
+        }}
+      />
       <SiteHeader
         categories={categories}
         shop={shop}
@@ -291,6 +302,7 @@ export default async function ProductPage({
                 <a
                   className="btn ghost on-dark"
                   href={waLink(shop.whatsapp)}
+                  data-track="product_help"
                   target="_blank"
                   rel="noopener"
                 >

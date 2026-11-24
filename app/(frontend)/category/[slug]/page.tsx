@@ -12,6 +12,7 @@ import {
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CategoryBrowser } from "./CategoryBrowser";
+import { TrackView } from "@/components/TrackView";
 import styles from "./category.module.css";
 
 export async function generateStaticParams() {
@@ -71,6 +72,10 @@ export default async function CategoryPage({
       />
 
       <main id="main" className="wrap">
+        <TrackView
+          event="category_view"
+          data={{ category: category.name, products: products.length }}
+        />
         <div className="crumb">
           <Link href="/">Home</Link>
           <span className="sep">/</span>

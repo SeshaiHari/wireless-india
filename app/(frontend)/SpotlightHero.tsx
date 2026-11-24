@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Category, Product, ShopSettings } from "@/lib/types";
-import { discountPct } from "@/lib/price";
+import { discountPct, parsePrice } from "@/lib/price";
 import { orderLink, waLink } from "@/lib/wa";
 import { Icon } from "@/components/Icon";
 import { AddToCartButton } from "@/components/AddToCartButton";
@@ -60,6 +60,7 @@ export function SpotlightHero({
                 <a
                   className="btn ghost on-dark"
                   href={waLink(shop.whatsapp)}
+                  data-track="spotlight"
                   target="_blank"
                   rel="noopener"
                 >
@@ -107,6 +108,12 @@ export function SpotlightHero({
                     <a
                       className="btn wa"
                       href={orderLink(shop.whatsapp, [{ product, qty: 1 }])}
+                      data-track="spotlight"
+                      data-track-kind="order"
+                      data-track-product={product.name}
+                      data-track-items={1}
+                      data-track-units={1}
+                      data-track-value={parsePrice(product.price) || undefined}
                       target="_blank"
                       rel="noopener"
                     >

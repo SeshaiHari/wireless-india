@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { addToCart } from "@/lib/cart";
+import { track } from "@/lib/analytics";
 
 /** Compact "Add" button for product cards (sits inside the card link). */
 export function AddToCartButton({
@@ -30,6 +31,12 @@ export function AddToCartButton({
         e.preventDefault();
         e.stopPropagation();
         addToCart(productId, 1);
+        track("add_to_cart", {
+          product: productName,
+          qty: 1,
+          source: "quick_add",
+          page: window.location.pathname,
+        });
         setAdded(true);
       }}
       aria-label={`Add ${productName} to cart`}

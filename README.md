@@ -64,10 +64,28 @@ npm run lint                 # eslint
 Visitor analytics uses [Umami](https://umami.is): open source, no cookies, no
 personal data, so no consent banner. It is off until a website ID is set.
 
-1. Sign up at cloud.umami.is (free tier), add the website, copy its **Website ID**.
-2. In Vercel → Settings → Environment Variables (Production), add
-   `NEXT_PUBLIC_UMAMI_WEBSITE_ID` and `NEXT_PUBLIC_UMAMI_DOMAINS` (your domain),
-   then redeploy. Self-hosting later? Also set `NEXT_PUBLIC_UMAMI_SCRIPT_URL`.
+**Self-hosted (free, on Vercel + Neon):**
+
+1. Neon (or Vercel → Storage → Neon): create a **new, empty database** for Umami.
+   Don't reuse the Payload database. Copy its connection string.
+2. GitHub: fork `umami-software/umami`.
+3. Vercel → Add New → Project → import the fork. Add env vars
+   `DATABASE_URL` (the Umami connection string) and, optionally,
+   `TRACKER_SCRIPT_NAME=stats` (serves the script as `/stats.js`, which fewer
+   ad blockers block). Deploy. The first build creates Umami's tables.
+4. Open the Umami site, log in as `admin` / `umami`, and **change the password
+   right away** (Settings → Profile).
+5. Settings → Websites → Add website (your shop domain) → copy the **Website ID**.
+6. In the shop's Vercel project (Production env), set:
+   - `NEXT_PUBLIC_UMAMI_WEBSITE_ID` = the Website ID
+   - `NEXT_PUBLIC_UMAMI_SCRIPT_URL` = `https://<your-umami>.vercel.app/stats.js`
+     (or `/script.js` if you skipped `TRACKER_SCRIPT_NAME`)
+   - `NEXT_PUBLIC_UMAMI_DOMAINS` = your shop domain, e.g. `wirelessindia.in`
+
+   Then redeploy the shop.
+
+**Umami Cloud instead:** sign up at cloud.umami.is (free tier), add the website,
+and set only `NEXT_PUBLIC_UMAMI_WEBSITE_ID` and `NEXT_PUBLIC_UMAMI_DOMAINS`.
 
 Page views are automatic. Custom events (`lib/analytics.ts`):
 
